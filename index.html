@@ -252,7 +252,7 @@ footer p{color:var(--mute);font-size:13px}
 .done .no{animation:fade .6s .5s both}
 .shake{animation:shake .4s}
 @keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}*{animation:none!important;transition:none!important}.draw .ln{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.diagram.open .lid-in{animation:none}}
 </style>
 </head>
 <body>
@@ -416,7 +416,7 @@ footer p{color:var(--mute);font-size:13px}
     if (nb) { nb.classList.add('pop'); var rp = document.createElement('i'); rp.className = 'ring'; nb.appendChild(rp); setTimeout(function () { rp.remove(); }, 650); nb.closest('.it').classList.add('glow'); }
     toast('انضاف ' + m[0] + ' للسلة'); upd(true);
   });
-  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var RM = false; /* animations are part of the prototype; Windows 'animation effects off' was hiding them all */
   function fly(from, m) {
     var cb = document.getElementById('cart-open'); if (RM || !cb.animate) return;
     var a = from.getBoundingClientRect(), z = cb.getBoundingClientRect(), d = document.createElement('div');
