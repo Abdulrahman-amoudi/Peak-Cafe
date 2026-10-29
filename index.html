@@ -139,6 +139,9 @@ footer p{color:var(--ink)!important}
 .add:active{transform:scale(.94)}
 .add.on{background:var(--pink);border-color:var(--pink);color:#fff}
 .it .q{font-size:13px;color:var(--mute)}
+.gh{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-top:18px;font-size:16px;font-weight:500;color:var(--mute)}
+.gh:first-child{margin-top:0}
+.gh .lat{font-weight:800;font-size:28px;letter-spacing:-.04em;color:var(--pink)}
 .grid.swap .it{animation:cardIn .55s cubic-bezier(.22,1,.36,1) both}
 .grid.swap .it:nth-child(2){animation-delay:.05s}.grid.swap .it:nth-child(3){animation-delay:.1s}.grid.swap .it:nth-child(4){animation-delay:.15s}.grid.swap .it:nth-child(n+5){animation-delay:.2s}
 @keyframes cardIn{from{opacity:0;transform:translateY(18px)}}
@@ -464,22 +467,26 @@ footer p{color:var(--mute);font-size:13px}
   var bag = {}, g = document.getElementById('menu-g');
   var PLUS = '<svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>', TICK = '<svg viewBox="0 0 14 14"><path d="M2 7.5l3 3 7-7"/></svg>';
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  var cat = 0, tabs = document.getElementById('tabs');
+  var cat = -1, tabs = document.getElementById('tabs');
   var OPT = location.hostname.indexOf('vercel.app') > -1;
   function photo(f, w) { return OPT ? '/_vercel/image?url=' + encodeURIComponent(SRC + f) + '&w=' + w + '&q=75' : SRC + f; }
   function thumb(m) { return m[5] ? '<img src="' + photo(m[5], 256) + '" alt="" onerror="this.remove()">' : '<svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg>'; }
   window.__img = function (im) { im.classList.add('ok'); };
   window.__imgErr = function (im) { if (!im.dataset.f && OPT) { im.dataset.f = 1; im.src = im.dataset.raw; } else im.remove(); };
   function renderTabs() {
-    tabs.innerHTML = MENU.map(function (c, ci) { return '<button type="button" role="tab" data-t="' + ci + '" aria-selected="' + (ci === cat) + '">' + c[1] + '</button>'; }).join('');
+    tabs.innerHTML = '<button type="button" role="tab" data-t="-1" aria-selected="' + (cat === -1) + '">الكل</button>' + MENU.map(function (c, ci) { return '<button type="button" role="tab" data-t="' + ci + '" aria-selected="' + (ci === cat) + '">' + c[1] + '</button>'; }).join('');
   }
   function render(swap) {
-    var c = MENU[cat];
-    g.innerHTML = c[2].map(function (m, i) {
+    var list = [];
+    MENU.forEach(function (c, ci) { if (cat === -1 || cat === ci) c[2].forEach(function (m, i) { list.push([m, ci, i, c]); }); });
+    var lastC = null;
+    g.innerHTML = list.map(function (x) {
+      var m = x[0], ci = x[1], i = x[2], head = '';
+      if (cat === -1 && x[3] !== lastC) { lastC = x[3]; head = '<h3 class="gh"><span class="lat">' + x[3][0] + '</span>' + x[3][1] + '</h3>'; }
       var n = bag[m[0]] || 0;
-      return '<article class="it"><div class="ph"><img loading="lazy" src="' + photo(m[5], 640) + '" data-raw="' + SRC + m[5] + '" alt="' + esc(m[1]) + '" onload="__img(this)" onerror="__imgErr(this)"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span>' + (m[6] ? '<span class="sz">M / L</span>' : '') + '</div>' +
+      return head + '<article class="it"><div class="ph"><img loading="lazy" src="' + photo(m[5], 640) + '" data-raw="' + SRC + m[5] + '" alt="' + esc(m[1]) + '" onload="__img(this)" onerror="__imgErr(this)"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span>' + (m[6] ? '<span class="sz">M / L</span>' : '') + '</div>' +
         '<div class="tx"><b>' + esc(m[0]) + '</b><span class="p">' + fmt(m[4]) + '</span><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>' +
-        '<div class="row"><span class="q">' + (n ? 'في السلة: ' + n : '') + '</span><button class="add' + (n ? ' on' : '') + '" data-c="' + cat + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK + 'أضف المزيد' : PLUS + 'أضف') + '</button></div></article>';
+        '<div class="row"><span class="q">' + (n ? 'في السلة: ' + n : '') + '</span><button class="add' + (n ? ' on' : '') + '" data-c="' + ci + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK + 'أضف المزيد' : PLUS + 'أضف') + '</button></div></article>';
     }).join('');
     if (swap) { g.classList.remove('swap'); void g.offsetWidth; g.classList.add('swap'); }
   }
