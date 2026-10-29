@@ -315,7 +315,7 @@ footer p{color:var(--mute);font-size:13px}
 </div></section>
 
 <section id="inside"><div class="w">
-  <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة واحدة، أربع طبقات.</small></h2></div>
+  <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة وحدة، أربع طبقات.</small></h2></div>
   <div class="diagram" id="dg">
     <svg viewBox="0 0 300 380" aria-hidden="true">
       <defs><clipPath id="lvl"><rect class="lvl" x="30" y="140" width="240" height="230"/></clipPath><clipPath id="cupc"><path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/></clipPath></defs>
@@ -338,10 +338,10 @@ footer p{color:var(--mute);font-size:13px}
     </svg>
     <div>
       <ol class="parts">
-        <li><span class="n">01</span><b>كرمبل مقرمش</b><p>زبدة وطحين وسكر بني، يُخبز طازجاً كل يوم.</p></li>
-        <li><span class="n">02</span><b>كاسترد كريمي</b><p>قوام ناعم وخفيف يوازن القرمشة.</p></li>
-        <li><span class="n">03</span><b>الفاكهة</b><p>تفاح أو موز مكرمل أو أناناس، حسب اختيارك.</p></li>
-        <li><span class="n">04</span><b>قاعدة الكرمبل</b><p>طبقة أخيرة تمنح كل ملعقة قرمشتها.</p></li>
+        <li><span class="n">01</span><b>كرمبل مقرمش</b><p>زبدة وطحين وسكر بني، بنخبزه كل يوم.</p></li>
+        <li><span class="n">02</span><b>كريمة خفيفة</b><p>ناعمة ومش ثقيلة.</p></li>
+        <li><span class="n">03</span><b>الحشوة</b><p>إنت بتختارها من المنيو.</p></li>
+        <li><span class="n">04</span><b>كرمبل كمان</b><p>لأنه ما في إشي اسمه كرمبل كثير.</p></li>
       </ol>
       <button class="peek" id="peek" type="button">افتح الكاسة</button>
     </div>
@@ -349,7 +349,7 @@ footer p{color:var(--mute);font-size:13px}
 </div></section>
 
 <section id="menu"><div class="w">
-  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اطلب عبر الموقع واستلم طلبك من المحل، أو اختر التوصيل.</small></h2></div>
+  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اطلب أونلاين، واستلم من المحل أو خلّينا نوصّلك.</small></h2></div>
   <div class="tabs" id="tabs" role="tablist" aria-label="أقسام القائمة"></div>
   <div class="grid" id="menu-g"></div>
   <p class="fine">الأسعار بالدينار الأردني. الدفع الإلكتروني متاح قريباً.</p>
@@ -358,8 +358,8 @@ footer p{color:var(--mute);font-size:13px}
 <section class="story" id="story"><div class="w">
   <span class="caps" style="color:var(--mute);padding-top:14px">03 — story</span>
   <div>
-    <blockquote>توقّعتُ أن يستغرق التجهيز شهراً واحداً، <em>فاستغرق ثلاثة أشهر كاملة.</em> والحمد لله، اكتمل العمل ونحن بانتظاركم.</blockquote>
-    <cite>حسان، مؤسس peak</cite>
+    <blockquote>كنت متوقع الموضوع ياخذ شهر بالكثير… <em>قعدت ٣ شهور كاملة.</em> بس الحمدلله خلصنا، وبنستناكم.</blockquote>
+    <cite>حسان، صاحب peak</cite>
   </div>
 </div></section>
 
@@ -374,7 +374,7 @@ footer p{color:var(--mute);font-size:13px}
       </dl>
       <div class="links">
         <a class="btn solid" href="https://www.google.com/maps/search/?api=1&query=Peak+7th+circle+Amman" target="_blank" rel="noopener">الاتجاهات</a>
-        <a class="btn" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">تواصل معنا</a>
+        <a class="btn" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">راسلنا</a>
       </div>
     </div>
     <div class="map"><iframe loading="lazy" title="peak على الخريطة" src="https://www.google.com/maps?q=Peak,+7th+circle,+Amman&output=embed"></iframe></div>
@@ -387,7 +387,7 @@ footer p{color:var(--mute);font-size:13px}
   <p>تصميم وتطوير: واجهة · <span class="lat">@wajiha.jo</span></p>
 </div></footer>
 
-<div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">عرض السلة</button></div></div>
+<div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">شوف السلة</button></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="السلة">
@@ -503,7 +503,7 @@ footer p{color:var(--mute);font-size:13px}
     var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save();
     fly(b, m); render(); var nb = g.querySelector('.add[data-c="' + b.dataset.c + '"][data-i="' + b.dataset.i + '"]');
     if (nb) { nb.classList.add('pop'); var rp = document.createElement('i'); rp.className = 'ring'; nb.appendChild(rp); setTimeout(function () { rp.remove(); }, 650); nb.closest('.it').classList.add('glow'); }
-    toast('تمت إضافة ' + m[0] + ' إلى السلة'); upd(true);
+    toast('انضاف ' + m[0] + ' للسلة'); upd(true);
   });
   var RM = false; /* animations are part of the prototype; Windows 'animation effects off' was hiding them all */
   function fly(from, m) {
@@ -533,7 +533,7 @@ footer p{color:var(--mute);font-size:13px}
     var n = count();
     document.getElementById('cart-n').textContent = n || '';
     var bagEl = document.getElementById('bag'), was = bagEl.classList.contains('show');
-    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' منتج' : ' منتجات') + ' · <b id="bag-t"></b>' : '';
+    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b id="bag-t"></b>' : '';
     if (n) countUp(document.getElementById('bag-t'), upd.last || 0, subtotal()); upd.last = subtotal();
     bagEl.classList.toggle('show', n > 0 && !drawer.classList.contains('on'));
     if (added && was) { bagEl.classList.remove('ping'); void bagEl.offsetWidth; bagEl.classList.add('ping'); }
@@ -558,27 +558,27 @@ footer p{color:var(--mute);font-size:13px}
     document.getElementById('d-title').textContent = step === 'checkout' ? 'checkout' : step === 'done' ? 'thank you' : 'cart';
     if (step === 'cart') {
       var keys = Object.keys(bag);
-      if (!keys.length) { db.innerHTML = '<div class="empty-c"><b>السلة فارغة</b>أضف منتجاتك من القائمة.</div>'; df.innerHTML = '<button class="pill full" type="button" data-go="menu">تصفّح القائمة</button>'; return; }
+      if (!keys.length) { db.innerHTML = '<div class="empty-c"><b>السلة فاضية</b>ضيف إشي من المنيو.</div>'; df.innerHTML = '<button class="pill full" type="button" data-go="menu">روح للمنيو</button>'; return; }
       db.innerHTML = keys.map(function (k) { var m = ITEMS[k];
-        return '<div class="ci"><span class="ic">' + thumb(m) + '</span><b>' + esc(k) + '</b><span class="lp">' + money(m[4] * bag[k]) + '</span><span class="qty"><button type="button" data-q="-1" data-k="' + esc(k) + '" aria-label="أقل">−</button><span>' + bag[k] + '</span><button type="button" data-q="1" data-k="' + esc(k) + '" aria-label="أكثر">+</button></span><button class="rm" type="button" data-rm="' + esc(k) + '">إزالة</button></div>';
+        return '<div class="ci"><span class="ic">' + thumb(m) + '</span><b>' + esc(k) + '</b><span class="lp">' + money(m[4] * bag[k]) + '</span><span class="qty"><button type="button" data-q="-1" data-k="' + esc(k) + '" aria-label="أقل">−</button><span>' + bag[k] + '</span><button type="button" data-q="1" data-k="' + esc(k) + '" aria-label="أكثر">+</button></span><button class="rm" type="button" data-rm="' + esc(k) + '">شيل</button></div>';
       }).join('');
-      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="checkout">متابعة الطلب</button>';
+      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="checkout">كمّل الطلب</button>';
     } else if (step === 'checkout') {
       db.innerHTML =
         '<div class="fld"><span>طريقة الاستلام</span><div class="seg"><label><input type="radio" name="mode" value="pickup"' + (form.mode === 'pickup' ? ' checked' : '') + '>استلام من المحل<small>الدوار السابع</small></label><label><input type="radio" name="mode" value="delivery"' + (form.mode === 'delivery' ? ' checked' : '') + '>توصيل<small>+' + money(DELIVERY) + '</small></label></div></div>' +
-        '<label class="fld" id="f-name"><span>الاسم</span><input autocomplete="name" value="' + esc(form.name || '') + '"><div class="err">يرجى إدخال الاسم</div></label>' +
-        '<label class="fld" id="f-phone"><span>رقم الهاتف</span><input type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="07X XXX XXXX" value="' + esc(form.phone || '') + '"><div class="err">يرجى إدخال رقم أردني صحيح (07X XXX XXXX)</div></label>' +
-        (form.mode === 'delivery' ? '<label class="fld" id="f-addr"><span>العنوان</span><textarea autocomplete="street-address" placeholder="المنطقة، الشارع، البناية، الطابق">' + esc(form.addr || '') + '</textarea><div class="err">يرجى إدخال العنوان</div></label>' : '') +
-        '<div class="fld"><span>الوقت</span><div class="seg"><label><input type="radio" name="when" value="asap"' + (form.when === 'asap' ? ' checked' : '') + '>في أقرب وقت<small>خلال ٢٠ دقيقة تقريباً</small></label><label><input type="radio" name="when" value="later"' + (form.when === 'later' ? ' checked' : '') + '>وقت محدد<small>اختر الوقت المناسب</small></label></div></div>' +
-        (form.when === 'later' ? '<label class="fld" id="f-time"><span>الساعة</span><input type="time" dir="ltr" value="' + esc(form.time || '') + '"><div class="err">يرجى اختيار الوقت</div></label>' : '') +
-        '<label class="fld"><span>ملاحظات (اختياري)</span><textarea id="f-note" placeholder="مثال: بدون سكر">' + esc(form.note || '') + '</textarea></label>' +
-        '<div class="fld"><span>الدفع</span><div class="seg"><label><input type="radio" name="pay" value="cash" checked>نقداً<small>عند الاستلام</small></label><label class="off"><span class="soon">قريباً</span><input type="radio" name="pay" value="card" disabled>بطاقة / CliQ<small>متاح قريباً</small></label></div></div>';
+        '<label class="fld" id="f-name"><span>الاسم</span><input autocomplete="name" value="' + esc(form.name || '') + '"><div class="err">اكتب اسمك</div></label>' +
+        '<label class="fld" id="f-phone"><span>رقم الهاتف</span><input type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="07X XXX XXXX" value="' + esc(form.phone || '') + '"><div class="err">اكتب رقم أردني صحيح (07X XXX XXXX)</div></label>' +
+        (form.mode === 'delivery' ? '<label class="fld" id="f-addr"><span>العنوان</span><textarea autocomplete="street-address" placeholder="المنطقة، الشارع، البناية، الطابق">' + esc(form.addr || '') + '</textarea><div class="err">اكتب العنوان</div></label>' : '') +
+        '<div class="fld"><span>الوقت</span><div class="seg"><label><input type="radio" name="when" value="asap"' + (form.when === 'asap' ? ' checked' : '') + '>بأسرع وقت<small>تقريباً ٢٠ دقيقة</small></label><label><input type="radio" name="when" value="later"' + (form.when === 'later' ? ' checked' : '') + '>وقت معيّن<small>اختار الساعة</small></label></div></div>' +
+        (form.when === 'later' ? '<label class="fld" id="f-time"><span>الساعة</span><input type="time" dir="ltr" value="' + esc(form.time || '') + '"><div class="err">اختار الساعة</div></label>' : '') +
+        '<label class="fld"><span>ملاحظات (اختياري)</span><textarea id="f-note" placeholder="مثلاً: بدون سكر">' + esc(form.note || '') + '</textarea></label>' +
+        '<div class="fld"><span>الدفع</span><div class="seg"><label><input type="radio" name="pay" value="cash" checked>كاش<small>عند الاستلام</small></label><label class="off"><span class="soon">قريباً</span><input type="radio" name="pay" value="card" disabled>بطاقة / CliQ<small>متاح قريباً</small></label></div></div>';
       df.innerHTML = totals() + '<button class="pill full" type="button" data-go="place">أكّد الطلب · <span class="lat">' + money(subtotal() + (form.mode === 'delivery' ? DELIVERY : 0)) + '</span></button><p style="text-align:center;font-size:12.5px;color:var(--mute);margin-top:10px">نسخة تجريبية: لن يتم إرسال الطلب فعلياً.</p>';
     } else {
       var o = form.last;
-      db.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>تم استلام طلبك</h4><div>رقم الطلب</div><div class="no">' + o.id + '</div><div>' + (o.mode === 'delivery' ? 'سيصلك طلبك' : 'سيكون طلبك جاهزاً للاستلام') + ' ' + (o.when === 'asap' ? 'خلال ٢٠ دقيقة تقريباً' : 'الساعة ' + esc(o.time)) + '.</div>' +
-        '<div class="recap">' + o.items.map(function (x) { return '<div><span>' + x[1] + ' × ' + esc(x[0]) + '</span><span class="lat">' + money(x[2]) + '</span></div>'; }).join('') + '<div style="border-top:1px solid rgba(26,23,24,.2);margin-top:6px;padding-top:8px;font-weight:700"><span>الإجمالي · نقداً</span><span class="lat">' + money(o.total) + '</span></div></div></div>';
-      df.innerHTML = '<button class="pill full" type="button" data-go="close">حسناً</button>';
+      db.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>وصلنا طلبك!</h4><div>رقم الطلب</div><div class="no">' + o.id + '</div><div>' + (o.mode === 'delivery' ? 'رح يوصلك' : 'جاهز للاستلام') + ' ' + (o.when === 'asap' ? 'خلال ٢٠ دقيقة تقريباً' : 'الساعة ' + esc(o.time)) + '.</div>' +
+        '<div class="recap">' + o.items.map(function (x) { return '<div><span>' + x[1] + ' × ' + esc(x[0]) + '</span><span class="lat">' + money(x[2]) + '</span></div>'; }).join('') + '<div style="border-top:1px solid rgba(26,23,24,.2);margin-top:6px;padding-top:8px;font-weight:700"><span>الإجمالي · كاش</span><span class="lat">' + money(o.total) + '</span></div></div></div>';
+      df.innerHTML = '<button class="pill full" type="button" data-go="close">تمام</button>';
     }
   }
   function readForm() {
