@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>peak — Amman</title>
+<meta name="description" content="peak. crumble & matcha at 7th circle, Amman.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Fredoka:wght@600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f5ee;--pink:#cf6e91;--blush:#f4b6ca;--blush2:#fbe3ea;--ink:#1a1718;--mute:#77706f;--rule:#1a1718}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.lat{font-family:"Inter Tight",system-ui,sans-serif;direction:ltr;unicode-bidi:isolate}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 28px}
+.mark{font-family:Fredoka,"Inter Tight",sans-serif;font-weight:600;color:var(--pink);letter-spacing:-.02em;line-height:1}
+.caps{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;direction:ltr;unicode-bidi:isolate}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:var(--paper)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:68px;border-bottom:1px solid var(--rule)}
+header .mark{font-size:30px}
+header nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+header nav a{position:relative}
+header nav a::after{content:"";position:absolute;inset:auto 0 -3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .3s}
+header nav a:hover::after{transform:none}
+@media(max-width:720px){header nav{display:none}}
+
+/* hero = their poster */
+.hero{padding:44px 0 0}
+.hero .w{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:end;min-height:calc(100vh - 68px - 44px);padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.hero h1{font-size:clamp(130px,24vw,330px);line-height:.8;letter-spacing:-.045em;text-align:left;grid-column:1/-1;align-self:start;margin-left:-.04em}
+.hero .what{grid-column:1/-1;font-weight:800;font-size:clamp(30px,4.4vw,60px);letter-spacing:-.045em;line-height:1;text-align:left;margin-top:-6px}
+.hero .what span{color:var(--pink);margin:0 .22em}
+.hero h1 span{display:block}
+.hero h1 .r{text-align:right}
+.hero .art{grid-column:1/-1;display:flex;justify-content:flex-start;margin:clamp(-360px,-22vw,-140px) 0 0;pointer-events:none}
+.hero .art svg{width:min(470px,36%);height:auto}
+@media(max-width:720px){.hero .w{min-height:auto;gap:22px;padding-bottom:24px}.hero .art{margin:6px 0 0;justify-content:center}.hero .art svg{width:92%}}
+.hero .meta{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.hero .meta .caps{font-size:13px}
+.state{display:inline-flex;align-items:center;gap:8px}
+.state i{width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.state.live i{background:#3f9a5a;box-shadow:0 0 0 4px rgba(63,154,90,.18)}
+
+/* line art */
+.ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ln.thin{stroke-width:1.3}
+.draw .ln{stroke-dasharray:var(--l,900);stroke-dashoffset:var(--l,900);animation:draw 2.2s cubic-bezier(.6,0,.2,1) forwards}
+.draw .ln:nth-child(2n){animation-delay:.15s}.draw .ln:nth-child(3n){animation-delay:.3s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* sections */
+section{padding:110px 0;border-bottom:1px solid var(--rule)}
+.sh{display:grid;grid-template-columns:160px 1fr;gap:28px;margin-bottom:56px}
+.sh .caps{color:var(--mute);padding-top:14px}
+.sh h2{font-family:"Inter Tight",sans-serif;font-weight:800;font-size:clamp(44px,6vw,84px);line-height:.9;letter-spacing:-.055em;color:var(--pink);direction:ltr;text-align:right}
+.sh h2 small{display:block;font-family:"IBM Plex Sans Arabic";font-weight:500;color:var(--ink);font-size:20px;letter-spacing:0;margin-top:14px;direction:rtl}
+@media(max-width:720px){.sh{grid-template-columns:1fr;gap:6px}.sh .caps{padding:0}}
+
+/* inside the cup */
+#inside{background:var(--blush)}
+#inside .sh h2{color:var(--ink)}
+#inside .sh .caps,#inside .parts p{color:rgba(26,23,24,.65)}
+footer{background:var(--blush)}
+footer .mark{color:var(--paper)!important}
+footer p{color:var(--ink)!important}
+.diagram{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.diagram svg{width:100%;max-width:440px;justify-self:center}
+.diagram svg{overflow:visible}
+.diagram .lid{transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+.diagram.open .lid{transform:translateY(-44px)}
+.diagram .fill{transform:translateY(210px);transition:transform 1.2s cubic-bezier(.2,.8,.2,1) .2s}
+.diagram.open .fill{transform:none}
+.parts{list-style:none;border-top:1px solid var(--rule)}
+.parts li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--rule);opacity:.25;transition:opacity .6s}
+.diagram.open .parts li{opacity:1}
+.diagram.open .parts li:nth-child(2){transition-delay:.12s}.diagram.open .parts li:nth-child(3){transition-delay:.24s}.diagram.open .parts li:nth-child(4){transition-delay:.36s}
+.parts .n{font-family:"Inter Tight";font-weight:800;color:var(--pink);font-size:26px;line-height:1.2;direction:ltr}
+.parts b{font-size:19px}
+.parts p{grid-column:2;color:var(--mute);font-size:15px}
+.peek{margin-top:26px;background:var(--paper);border:1px solid var(--ink);color:var(--ink);border-radius:999px;font:inherit;font-weight:500;padding:10px 22px;cursor:pointer;transition:background .2s,color .2s}
+.peek:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:860px){.diagram{grid-template-columns:1fr}}
+
+/* menu */
+.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:0 44px}
+.cat h3{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px}
+.cat h3 .lat{font-weight:800;font-size:30px;letter-spacing:-.04em;color:var(--pink)}
+.cat h3 span:last-child{font-size:15px;font-weight:500;color:var(--mute)}
+.it{display:grid;grid-template-columns:44px 1fr auto auto;gap:2px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(22,21,21,.18)}
+.it b{font-weight:700;font-size:17px}
+.it .p{font-family:"Inter Tight";font-weight:700;font-size:16px;direction:ltr;color:var(--mute)}
+.it .ic{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--blush2);display:grid;place-items:center}
+.it .ic svg{width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.it small{grid-column:2/3;color:var(--mute);font-size:14px;line-height:1.5}
+.it small .lat{font-size:13px}
+.add{grid-row:1/3;grid-column:4;color:var(--ink);width:34px;height:34px;border-radius:50%;border:1px solid var(--ink);background:none;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,transform .15s}
+.add svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
+.add:hover{background:var(--ink);color:var(--paper)}
+.add:active{transform:scale(.92)}
+.add.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.fine{margin-top:34px;color:var(--mute);font-size:13px}
+@media(max-width:960px){.menu{grid-template-columns:1fr 1fr;gap:40px 36px}}
+@media(max-width:620px){.menu{grid-template-columns:1fr}}
+
+/* story */
+.story .w{display:grid;grid-template-columns:160px 1fr;gap:28px}
+.story blockquote{font-size:clamp(26px,3.4vw,42px);line-height:1.45;font-weight:500;max-width:860px}
+.story blockquote em{font-style:normal;color:var(--pink)}
+.story cite{display:block;margin-top:24px;font-style:normal;color:var(--mute);font-size:15px}
+@media(max-width:720px){.story .w{grid-template-columns:1fr}}
+
+/* visit */
+.visit-g{display:grid;grid-template-columns:1fr 1.3fr;gap:44px;align-items:start}
+.facts{border-top:1px solid var(--rule)}
+.facts div{display:grid;grid-template-columns:120px 1fr;padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts dt{color:var(--mute);font-size:15px}
+.facts dd{font-weight:500}
+.links{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;border:1px solid var(--ink);font-weight:500;transition:background .2s,color .2s}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--pink);border-color:var(--pink);color:#fff}
+.map{aspect-ratio:4/3;border:1px solid var(--rule);overflow:hidden;background:#e9eadf}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
+@media(max-width:860px){.visit-g{grid-template-columns:1fr}}
+
+footer{padding:60px 0 120px}
+footer .w{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+footer .mark{font-size:clamp(90px,16vw,220px)}
+footer p{color:var(--mute);font-size:13px}
+
+/* order bar */
+.bag{position:fixed;inset:auto 0 0 0;z-index:20;transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.9,.2,1);background:var(--ink);color:var(--paper)}
+.bag.show{transform:none}
+.bag .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.bag .list{font-size:14px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bag a{background:var(--pink);color:#fff;border-radius:999px;padding:10px 22px;font-weight:700;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.draw .ln{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<header><div class="w">
+  <a class="mark lat" href="#top" aria-label="peak">peak</a>
+  <nav><a href="#inside">شو جوّا الكاسة</a><a href="#menu">المنيو</a><a href="#story">قصتنا</a><a href="#visit">زورونا</a></nav>
+  <a class="caps" href="https://www.instagram.com/peak.joo/" target="_blank" rel="noopener">@peak.joo</a>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding-top:44px;border:0"><div class="w">
+  <h1 class="mark lat">peak</h1><p class="what lat">crumble <span>&amp;</span> matcha</p>
+  <div class="art draw" aria-hidden="true">
+    <!-- the counter from their soft-opening poster, redrawn as line art -->
+    <svg viewBox="0 0 520 300">
+      <path class="ln" style="--l:700" d="M60 92 L448 80 L462 96 L74 110 Z"/>
+      <path class="ln" style="--l:800" d="M74 110 L90 262 Q92 272 104 272 L430 262 Q442 261 444 250 L462 96"/>
+      <path class="ln thin" style="--l:600" d="M80 114 L95 258 M440 100 L428 252"/>
+      <path class="ln" style="--l:300" d="M448 80 L448 48 Q449 40 457 41 L470 42 Q477 43 476 51 L474 92"/>
+      <path class="ln thin" style="--l:400" d="M454 50 L470 51 M453 58 L471 59 M453 66 L471 67 M453 74 L471 75"/>
+      <path class="ln" style="--l:260" d="M96 88 L94 54 L150 52 L152 86"/>
+      <path class="ln thin" style="--l:200" d="M104 60 L144 59 M104 68 L144 67"/>
+      <path class="ln" style="--l:220" d="M196 84 Q200 58 222 58 Q244 58 246 83"/>
+      <path class="ln" style="--l:160" d="M300 82 L304 60 L330 60 L333 81 M316 60 L318 46"/>
+      <text x="268" y="196" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="34" fill="#161515">peak</text>
+    </svg>
+  </div>
+  <div class="meta">
+    <div class="caps">Thursday, 29 October<br>6:00 PM · Soft opening</div>
+    <div class="state caps" id="state"><i></i><span id="state-t">Opening soon</span></div>
+    <div class="caps" style="text-align:right">7th circle<br>Amman, Jordan</div>
+  </div>
+</div></section>
+
+<section id="inside"><div class="w">
+  <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة وحدة، أربع طبقات.</small></h2></div>
+  <div class="diagram" id="dg">
+    <svg viewBox="0 0 300 380" aria-hidden="true">
+      <defs><clipPath id="cupc"><path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/></clipPath></defs>
+      <ellipse cx="150" cy="362" rx="86" ry="8" fill="rgba(26,23,24,.12)"/>
+      <path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z" fill="rgba(255,255,255,.55)"/>
+      <g clip-path="url(#cupc)"><g class="fill">
+        <rect x="40" y="150" width="220" height="46" fill="#e2a868"/>
+        <rect x="40" y="196" width="220" height="50" fill="#fffaf6"/>
+        <rect x="40" y="246" width="220" height="54" fill="#d9799b"/>
+        <rect x="40" y="300" width="220" height="60" fill="#e2a868"/>
+        <path d="M40 196 q20 -7 40 0 t40 0 t40 0 t40 0 t40 0 M40 246 q20 6 40 0 t40 0 t40 0 t40 0 t40 0 M40 300 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="rgba(26,23,24,.25)" stroke-width="1.5"/>
+        <g font-family="Inter Tight, sans-serif" font-weight="800" font-size="15" fill="#1a1718"><text x="102" y="178">01</text><text x="102" y="226">02</text><text x="102" y="278">03</text><text x="102" y="332">04</text></g>
+      </g></g>
+      <path class="ln" d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/>
+      <text x="196" y="330" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="22" fill="#fffaf6">peak</text>
+      <g class="lid">
+        <path class="ln" d="M60 140 Q66 62 150 58 Q234 62 240 140 Z" fill="rgba(255,255,255,.7)"/>
+        <rect class="ln" x="46" y="138" width="208" height="14" rx="7" fill="#fffaf6"/>
+        <path class="ln thin" d="M136 60 Q150 46 164 60"/>
+        <path d="M96 128 Q102 96 128 84" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="5" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <div>
+      <ol class="parts">
+        <li><span class="n">01</span><b>كرمبل مقرمش</b><p>زبدة وطحين وسكر بني، بنخبزه كل يوم.</p></li>
+        <li><span class="n">02</span><b>كريمة خفيفة</b><p>ناعمة ومش ثقيلة.</p></li>
+        <li><span class="n">03</span><b>الحشوة</b><p>إنت بتختارها من المنيو.</p></li>
+        <li><span class="n">04</span><b>كرمبل كمان</b><p>لأنه ما في إشي اسمه كرمبل كثير.</p></li>
+      </ol>
+      <button class="peek" id="peek" type="button">افتح الكاسة</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="menu"><div class="w">
+  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اختار، وابعتلنا الطلب على إنستغرام.</small></h2></div>
+  <div class="menu" id="menu-g"></div>
+  <p class="fine">الأصناف والأسعار هون للعرض، بنحطّ منيو peak الحقيقي قبل الإطلاق.</p>
+</div></section>
+
+<section class="story" id="story"><div class="w">
+  <span class="caps" style="color:var(--mute);padding-top:14px">03 — story</span>
+  <div>
+    <blockquote>كنت متوقع الموضوع ياخذ شهر بالكثير… <em>قعدت ٣ شهور كاملة.</em> بس الحمدلله خلصنا، وبنستناكم.</blockquote>
+    <cite>صاحب peak، من إنستغرام</cite>
+  </div>
+</div></section>
+
+<section id="visit"><div class="w">
+  <div class="sh"><span class="caps">04 — visit</span><h2>see you at peak<small>الدوار السابع، عمّان.</small></h2></div>
+  <div class="visit-g">
+    <div>
+      <dl class="facts">
+        <div><dt>المكان</dt><dd>الدوار السابع، عمّان</dd></div>
+        <div><dt>الافتتاح</dt><dd>الخميس ٢٩ تشرين الأول، ٦ مساءً</dd></div>
+        <div><dt>إنستغرام</dt><dd class="lat" style="text-align:right">@peak.joo</dd></div>
+      </dl>
+      <div class="links">
+        <a class="btn solid" href="https://www.google.com/maps/search/?api=1&query=Peak+7th+circle+Amman" target="_blank" rel="noopener">الاتجاهات</a>
+        <a class="btn" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">راسلنا</a>
+      </div>
+    </div>
+    <div class="map"><iframe loading="lazy" title="peak على الخريطة" src="https://www.google.com/maps?q=Peak,+7th+circle,+Amman&output=embed"></iframe></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="w">
+  <span class="mark lat">peak</span>
+  <p>نموذج تجريبي من واجهة · <span class="lat">@wajiha.jo</span></p>
+</div></footer>
+
+<div class="bag" id="bag"><div class="w"><span class="list" id="bag-l"></span><a id="bag-go" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">ابعت الطلب</a></div></div>
+
+<script>
+(function () {
+  'use strict';
+  var MENU = [
+    ['crumble', 'كرمبل', [['كرمبل لوتس', 'Lotus', 'كريمة، صوص لوتس، كرمبل', 'cookie'], ['كرمبل نوتيلا', 'Nutella', 'شوكولاتة دافية', 'choc'], ['كرمبل فراولة', 'Strawberry', 'فراولة طازة وكريمة', 'berry'], ['كرمبل بستاشيو', 'Pistachio', 'كريمة فستق', 'nut']]],
+    ['matcha', 'ماتشا', [['آيس ماتشا لاتيه', 'Iced Matcha Latte', 'ماتشا، حليب، ثلج', 'glass'], ['ماتشا فراولة', 'Strawberry Matcha', 'فراولة تحت، ماتشا فوق', 'layer'], ['ماتشا كرمبل', 'Matcha Crumble', 'الاثنين بكاسة وحدة', 'cup']]],
+    ['coffee', 'قهوة وغيرها', [['سبانش لاتيه', 'Spanish Latte', 'حليب مكثف وإسبريسو', 'mug'], ['آيس أمريكانو', 'Iced Americano', 'بسيط ومزبوط', 'ice'], ['ليمون ونعنع', 'Lemon Mint', 'منعش', 'lemon']]]
+  ];
+  var IC = {
+    cookie: '<circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9.5" r="1"/><circle cx="14.5" cy="10" r="1"/><circle cx="11" cy="14.5" r="1"/><circle cx="15" cy="15" r=".8"/>',
+    choc: '<rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M6 9.2h12M6 14.8h12M12 3.5v17"/>',
+    berry: '<path d="M12 8c4.5 0 6.5 2.5 6 6-.6 4-3.6 6.5-6 6.5S6.6 18 6 14c-.5-3.5 1.5-6 6-6z"/><path d="M9 5.5L12 8l3-2.5M12 8V4"/><path d="M10 12h.01M14 12h.01M12 15h.01M10 17.5h.01M14 17.5h.01"/>',
+    nut: '<path d="M12 3.5c3.8 0 6.5 3.6 6.5 8.5s-2.7 8.5-6.5 8.5S5.5 16.9 5.5 12 8.2 3.5 12 3.5z"/><path d="M12 3.5c-2 3-2 14 0 17"/>',
+    glass: '<path d="M6 7h12l-1.4 13.2a1 1 0 0 1-1 .8H8.4a1 1 0 0 1-1-.8z"/><path d="M14.5 7l1.5-4.5M7 11.5h10"/>',
+    layer: '<path d="M6 7h12l-1.4 13.2a1 1 0 0 1-1 .8H8.4a1 1 0 0 1-1-.8z"/><path d="M6.6 12.5h10.8M7.1 16.5h9.8"/>',
+    cup: '<path d="M6.5 10h11l-1.3 10.2a1 1 0 0 1-1 .8H8.8a1 1 0 0 1-1-.8z"/><path d="M5 10h14M6.5 10c0-3.3 2.4-5 5.5-5s5.5 1.7 5.5 5"/>',
+    mug: '<path d="M5 8h11v7a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16M9 3.5c-.8 1 .8 2 0 3M12.5 3.5c-.8 1 .8 2 0 3"/>',
+    ice: '<path d="M6 5h12l-1.4 15.2a1 1 0 0 1-1 .8H8.4a1 1 0 0 1-1-.8z"/><rect x="8.5" y="9" width="3.5" height="3.5" rx=".6" transform="rotate(-10 10 11)"/><rect x="12.5" y="12.5" width="3.5" height="3.5" rx=".6" transform="rotate(12 14 14)"/>',
+    lemon: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.5"/><path d="M12 6.5v11M6.5 12h11M8.1 8.1l7.8 7.8M15.9 8.1l-7.8 7.8"/>'
+  };
+  var bag = {}, g = document.getElementById('menu-g');
+  var PLUS = '<svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>', TICK = '<svg viewBox="0 0 14 14"><path d="M2 7.5l3 3 7-7"/></svg>';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    g.innerHTML = MENU.map(function (c, ci) {
+      return '<div class="cat"><h3><span class="lat">' + c[0] + '</span><span>' + c[1] + '</span></h3>' + c[2].map(function (m, i) {
+        var n = bag[m[0]] || 0;
+        return '<div class="it"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(m[0]) + '</b><span class="p">— JD</span><button class="add' + (n ? ' on' : '') + '" data-c="' + ci + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK : PLUS) + '</button><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>';
+      }).join('') + '</div>';
+    }).join('');
+  }
+  g.addEventListener('click', function (e) {
+    var b = e.target.closest('.add'); if (!b) return;
+    var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = (bag[m[0]] || 0) + 1; render(); upd();
+  });
+  function upd() {
+    var lines = Object.keys(bag).map(function (k) { return bag[k] + ' × ' + k; });
+    document.getElementById('bag-l').textContent = lines.join('، ');
+    document.getElementById('bag').classList.toggle('show', lines.length > 0);
+    document.getElementById('bag-go').onclick = function () { try { navigator.clipboard.writeText('طلب من الموقع:\n' + lines.join('\n')); } catch (e) {} };
+  }
+  render();
+
+  var dg = document.getElementById('dg'), peek = document.getElementById('peek');
+  function toggle() { var o = dg.classList.toggle('open'); peek.textContent = o ? 'سكّر الكاسة' : 'افتح الكاسة'; }
+  peek.addEventListener('click', toggle);
+  dg.querySelector('svg').addEventListener('click', toggle);
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !dg.classList.contains('open')) { setTimeout(toggle, 400); io.disconnect(); } }); }, { threshold: .55 });
+    io.observe(dg);
+  }
+
+  var op = new Date('2026-10-29T18:00:00+03:00');
+  function st() {
+    var d = op - new Date(), el = document.getElementById('state'), t = document.getElementById('state-t');
+    if (d <= 0) { el.classList.add('live'); t.textContent = 'Open now'; return; }
+    var h = Math.floor(d / 36e5), m = Math.floor(d % 36e5 / 6e4);
+    t.textContent = 'Opens in ' + (h ? h + 'h ' : '') + m + 'm';
+  }
+  st(); setInterval(st, 30000);
+})();
+</script>
+</body>
+</html>
