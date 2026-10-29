@@ -93,8 +93,8 @@ footer p{color:var(--ink)!important}
 .it{display:grid;grid-template-columns:44px 1fr auto auto;gap:2px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(22,21,21,.18)}
 .it b{font-weight:700;font-size:17px}
 .it .p{font-family:"Inter Tight";font-weight:700;font-size:16px;direction:ltr;color:var(--mute)}
-.it .ic{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--blush2);display:grid;place-items:center}
-.it .ic svg{width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.it .ic,.ci .ic{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--blush2);display:grid;place-items:center}
+.it .ic svg,.ci .ic svg{width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .it small{grid-column:2/3;color:var(--mute);font-size:14px;line-height:1.5}
 .it small .lat{font-size:13px}
 .add{grid-row:1/3;grid-column:4;color:var(--ink);width:34px;height:34px;border-radius:50%;border:1px solid var(--ink);background:none;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,transform .15s}
@@ -136,8 +136,62 @@ footer p{color:var(--mute);font-size:13px}
 .bag{position:fixed;inset:auto 0 0 0;z-index:20;transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.9,.2,1);background:var(--ink);color:var(--paper)}
 .bag.show{transform:none}
 .bag .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
-.bag .list{font-size:14px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bag a{background:var(--pink);color:#fff;border-radius:999px;padding:10px 22px;font-weight:700;white-space:nowrap}
+.bag .sum{font-size:15px}.bag .sum b{font-family:"Inter Tight";font-weight:800;direction:ltr;unicode-bidi:isolate}
+.bag button,.pill{background:var(--pink);color:#fff;border:0;border-radius:999px;padding:11px 24px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap;transition:filter .2s,transform .15s}
+.bag button:hover,.pill:hover{filter:brightness(1.07)}.bag button:active,.pill:active{transform:scale(.97)}
+.pill:disabled{opacity:.45;cursor:not-allowed}
+.pill.full{width:100%;padding:15px;font-size:17px}
+.cart-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);border-radius:999px;padding:7px 14px;background:none;font:inherit;font-weight:500;font-size:14px;cursor:pointer;color:var(--ink)}
+.cart-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cart-btn .n{font-family:"Inter Tight";font-weight:800;background:var(--pink);color:#fff;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+.cart-btn .n:empty{display:none}
+.scrim{position:fixed;inset:0;background:rgba(26,23,24,.38);z-index:30;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.scrim.on{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(460px,100%);z-index:31;background:var(--paper);border-right:1px solid var(--ink);transform:translateX(-102%);transition:transform .45s cubic-bezier(.2,.9,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.d-h{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--ink)}
+.d-h h3{font-family:"Inter Tight";font-weight:800;font-size:30px;letter-spacing:-.04em;color:var(--pink);direction:ltr}
+.d-h .x{width:38px;height:38px;border-radius:50%;border:1px solid var(--ink);background:none;cursor:pointer;font-size:20px;line-height:1;color:var(--ink)}
+.steps{display:flex;gap:6px;padding:14px 24px 0;font-size:13px;color:var(--mute)}
+.steps span{flex:1;border-top:3px solid rgba(26,23,24,.15);padding-top:6px}
+.steps span.on{border-color:var(--pink);color:var(--ink);font-weight:700}
+.d-b{flex:1;overflow-y:auto;padding:8px 24px 24px;overscroll-behavior:contain}
+.d-f{border-top:1px solid var(--ink);padding:18px 24px 22px;background:var(--paper)}
+.ci{display:grid;grid-template-columns:44px 1fr auto;gap:4px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,23,24,.18)}
+.ci .ic{grid-row:1/3}
+.ci b{font-size:16px}
+.ci .lp{font-family:"Inter Tight";font-weight:700;direction:ltr;text-align:left}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;grid-column:2;justify-self:start}
+.qty button{width:30px;height:30px;border:0;background:none;font-size:17px;cursor:pointer;color:var(--ink)}
+.qty span{min-width:24px;text-align:center;font-family:"Inter Tight";font-weight:700}
+.rm{grid-column:3;justify-self:end;background:none;border:0;color:var(--mute);font:inherit;font-size:13px;cursor:pointer;text-decoration:underline}
+.tot{display:grid;grid-template-columns:1fr auto;gap:6px;font-size:15px;margin-bottom:16px}
+.tot .v{font-family:"Inter Tight";font-weight:700;direction:ltr;text-align:left}
+.tot .g{font-size:19px;font-weight:700;padding-top:10px;margin-top:4px;border-top:1px solid rgba(26,23,24,.2)}
+.tot{column-gap:0}
+.empty-c{text-align:center;padding:60px 10px;color:var(--mute)}
+.empty-c b{display:block;color:var(--ink);font-size:20px;margin-bottom:6px}
+.fld{display:block;margin-top:16px}
+.fld>span{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+.fld input,.fld textarea{width:100%;border:1px solid var(--ink);border-radius:12px;background:#fff;padding:12px 14px;font:inherit;font-size:16px;color:var(--ink)}
+.fld textarea{min-height:76px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:2px solid var(--pink);outline-offset:1px}
+.fld .err{color:#b3364f;font-size:13px;margin-top:4px;display:none}
+.fld.bad .err{display:block}.fld.bad input{border-color:#b3364f}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{position:relative;border:1px solid var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;background:#fff;font-size:15px}
+.seg label small{display:block;color:var(--mute);font-size:12.5px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){border-color:var(--pink);box-shadow:inset 0 0 0 1px var(--pink);background:var(--blush2)}
+.seg label.off{opacity:.45;cursor:not-allowed}
+.seg label .soon{position:absolute;top:8px;left:10px;font-size:11px;background:var(--ink);color:var(--paper);border-radius:999px;padding:0 8px}
+.done{text-align:center;padding:40px 6px}
+.done .ok{width:74px;height:74px;border-radius:50%;background:var(--pink);display:grid;place-items:center;margin:0 auto 18px}
+.done .ok svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.done h4{font-size:26px;margin-bottom:6px}
+.done .no{font-family:"Inter Tight";font-weight:800;font-size:22px;color:var(--pink);direction:ltr;display:inline-block;margin:6px 0 14px}
+.recap{text-align:start;border:1px solid rgba(26,23,24,.2);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:14px;background:#fff}
+.recap div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.draw .ln{stroke-dashoffset:0}}
 </style>
 </head>
@@ -146,7 +200,7 @@ footer p{color:var(--mute);font-size:13px}
 <header><div class="w">
   <a class="mark lat" href="#top" aria-label="peak">peak</a>
   <nav><a href="#inside">شو جوّا الكاسة</a><a href="#menu">المنيو</a><a href="#story">قصتنا</a><a href="#visit">زورونا</a></nav>
-  <a class="caps" href="https://www.instagram.com/peak.joo/" target="_blank" rel="noopener">@peak.joo</a>
+  <button class="cart-btn" id="cart-open" type="button" aria-label="السلة"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>السلة<span class="n" id="cart-n"></span></button>
 </div></header>
 
 <main id="top">
@@ -211,9 +265,9 @@ footer p{color:var(--mute);font-size:13px}
 </div></section>
 
 <section id="menu"><div class="w">
-  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اختار، وابعتلنا الطلب على إنستغرام.</small></h2></div>
+  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اطلب أونلاين، واستلم من المحل أو خلّينا نوصّلك.</small></h2></div>
   <div class="menu" id="menu-g"></div>
-  <p class="fine">الأصناف والأسعار هون للعرض، بنحطّ منيو peak الحقيقي قبل الإطلاق.</p>
+  <p class="fine">الأصناف والأسعار هون تجريبية، بنحطّ منيو peak الحقيقي قبل الإطلاق. الدفع الإلكتروني مش مفعّل لسا.</p>
 </div></section>
 
 <section class="story" id="story"><div class="w">
@@ -248,15 +302,22 @@ footer p{color:var(--mute);font-size:13px}
   <p>نموذج تجريبي من واجهة · <span class="lat">@wajiha.jo</span></p>
 </div></footer>
 
-<div class="bag" id="bag"><div class="w"><span class="list" id="bag-l"></span><a id="bag-go" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">ابعت الطلب</a></div></div>
+<div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">شوف السلة</button></div></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="السلة">
+  <div class="d-h"><h3 id="d-title">cart</h3><button class="x" type="button" id="d-x" aria-label="إغلاق">×</button></div>
+  <div class="steps" id="steps"><span data-s="cart">١ السلة</span><span data-s="checkout">٢ التفاصيل</span><span data-s="done">٣ تم</span></div>
+  <div class="d-b" id="d-b"></div>
+  <div class="d-f" id="d-f"></div>
+</aside>
 
 <script>
 (function () {
   'use strict';
   var MENU = [
-    ['crumble', 'كرمبل', [['كرمبل لوتس', 'Lotus', 'كريمة، صوص لوتس، كرمبل', 'cookie'], ['كرمبل نوتيلا', 'Nutella', 'شوكولاتة دافية', 'choc'], ['كرمبل فراولة', 'Strawberry', 'فراولة طازة وكريمة', 'berry'], ['كرمبل بستاشيو', 'Pistachio', 'كريمة فستق', 'nut']]],
-    ['matcha', 'ماتشا', [['آيس ماتشا لاتيه', 'Iced Matcha Latte', 'ماتشا، حليب، ثلج', 'glass'], ['ماتشا فراولة', 'Strawberry Matcha', 'فراولة تحت، ماتشا فوق', 'layer'], ['ماتشا كرمبل', 'Matcha Crumble', 'الاثنين بكاسة وحدة', 'cup']]],
-    ['coffee', 'قهوة وغيرها', [['سبانش لاتيه', 'Spanish Latte', 'حليب مكثف وإسبريسو', 'mug'], ['آيس أمريكانو', 'Iced Americano', 'بسيط ومزبوط', 'ice'], ['ليمون ونعنع', 'Lemon Mint', 'منعش', 'lemon']]]
+    ['crumble', 'كرمبل', [['كرمبل لوتس', 'Lotus', 'كريمة، صوص لوتس، كرمبل', 'cookie', 3.5], ['كرمبل نوتيلا', 'Nutella', 'شوكولاتة دافية', 'choc', 3.75], ['كرمبل فراولة', 'Strawberry', 'فراولة طازة وكريمة', 'berry', 3.75], ['كرمبل بستاشيو', 'Pistachio', 'كريمة فستق', 'nut', 4.25]]],
+    ['matcha', 'ماتشا', [['آيس ماتشا لاتيه', 'Iced Matcha Latte', 'ماتشا، حليب، ثلج', 'glass', 3.25], ['ماتشا فراولة', 'Strawberry Matcha', 'فراولة تحت، ماتشا فوق', 'layer', 3.75], ['ماتشا كرمبل', 'Matcha Crumble', 'الاثنين بكاسة وحدة', 'cup', 4.5]]],
+    ['coffee', 'قهوة وغيرها', [['سبانش لاتيه', 'Spanish Latte', 'حليب مكثف وإسبريسو', 'mug', 2.75], ['آيس أمريكانو', 'Iced Americano', 'بسيط ومزبوط', 'ice', 2.25], ['ليمون ونعنع', 'Lemon Mint', 'منعش', 'lemon', 2]]]
   ];
   var IC = {
     cookie: '<circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9.5" r="1"/><circle cx="14.5" cy="10" r="1"/><circle cx="11" cy="14.5" r="1"/><circle cx="15" cy="15" r=".8"/>',
@@ -277,21 +338,105 @@ footer p{color:var(--mute);font-size:13px}
     g.innerHTML = MENU.map(function (c, ci) {
       return '<div class="cat"><h3><span class="lat">' + c[0] + '</span><span>' + c[1] + '</span></h3>' + c[2].map(function (m, i) {
         var n = bag[m[0]] || 0;
-        return '<div class="it"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(m[0]) + '</b><span class="p">— JD</span><button class="add' + (n ? ' on' : '') + '" data-c="' + ci + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK : PLUS) + '</button><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>';
+        return '<div class="it"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(m[0]) + '</b><span class="p">' + fmt(m[4]) + '</span><button class="add' + (n ? ' on' : '') + '" data-c="' + ci + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK : PLUS) + '</button><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>';
       }).join('') + '</div>';
     }).join('');
   }
+  function fmt(n) { return (n % 1 ? n.toFixed(2).replace(/0$/, '') : String(n)) + ' JD'; }
+  function money(n) { return n.toFixed(2) + ' JD'; }
+  var ITEMS = {}; MENU.forEach(function (c) { c[2].forEach(function (m) { ITEMS[m[0]] = m; }); });
+  try { var saved = JSON.parse(localStorage.getItem('peak-cart') || '{}'); Object.keys(saved).forEach(function (k) { if (ITEMS[k] && saved[k] > 0) bag[k] = Math.min(20, saved[k] | 0); }); } catch (e) {}
+  function save() { try { localStorage.setItem('peak-cart', JSON.stringify(bag)); } catch (e) {} }
+  function count() { return Object.keys(bag).reduce(function (a, k) { return a + bag[k]; }, 0); }
+  function subtotal() { return Object.keys(bag).reduce(function (a, k) { return a + bag[k] * ITEMS[k][4]; }, 0); }
+  var DELIVERY = 1.5, step = 'cart', form = { mode: 'pickup', when: 'asap', pay: 'cash' };
   g.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
-    var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = (bag[m[0]] || 0) + 1; render(); upd();
+    var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save(); render(); upd();
   });
   function upd() {
-    var lines = Object.keys(bag).map(function (k) { return bag[k] + ' × ' + k; });
-    document.getElementById('bag-l').textContent = lines.join('، ');
-    document.getElementById('bag').classList.toggle('show', lines.length > 0);
-    document.getElementById('bag-go').onclick = function () { try { navigator.clipboard.writeText('طلب من الموقع:\n' + lines.join('\n')); } catch (e) {} };
+    var n = count();
+    document.getElementById('cart-n').textContent = n || '';
+    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b>' + money(subtotal()) + '</b>' : '';
+    document.getElementById('bag').classList.toggle('show', n > 0 && !drawer.classList.contains('on'));
   }
-  render();
+  var drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim'), db = document.getElementById('d-b'), df = document.getElementById('d-f');
+  function openCart(st) { step = st || (step === 'done' ? 'cart' : step); drawer.classList.add('on'); scrim.classList.add('on'); drawer.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; paint(); upd(); }
+  function closeCart() { drawer.classList.remove('on'); scrim.classList.remove('on'); drawer.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (step === 'done') step = 'cart'; upd(); }
+  document.getElementById('cart-open').onclick = function () { openCart(); };
+  document.getElementById('bag-go').onclick = function () { openCart('cart'); };
+  document.getElementById('d-x').onclick = closeCart; scrim.onclick = closeCart;
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.classList.contains('on')) closeCart(); });
+  function totals() {
+    var sub = subtotal(), del = form.mode === 'delivery' ? DELIVERY : 0;
+    return '<div class="tot"><span>المجموع</span><span class="v">' + money(sub) + '</span>' + (form.mode === 'delivery' ? '<span>التوصيل</span><span class="v">' + money(del) + '</span>' : '') + '<span class="g">الإجمالي</span><span class="v g">' + money(sub + del) + '</span></div>';
+  }
+  function paint() {
+    document.querySelectorAll('#steps span').forEach(function (x) { x.classList.toggle('on', x.dataset.s === step); });
+    document.getElementById('d-title').textContent = step === 'checkout' ? 'checkout' : step === 'done' ? 'thank you' : 'cart';
+    if (step === 'cart') {
+      var keys = Object.keys(bag);
+      if (!keys.length) { db.innerHTML = '<div class="empty-c"><b>السلة فاضية</b>ضيف إشي من المنيو.</div>'; df.innerHTML = '<button class="pill full" type="button" data-go="menu">روح للمنيو</button>'; return; }
+      db.innerHTML = keys.map(function (k) { var m = ITEMS[k];
+        return '<div class="ci"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(k) + '</b><span class="lp">' + money(m[4] * bag[k]) + '</span><span class="qty"><button type="button" data-q="-1" data-k="' + esc(k) + '" aria-label="أقل">−</button><span>' + bag[k] + '</span><button type="button" data-q="1" data-k="' + esc(k) + '" aria-label="أكثر">+</button></span><button class="rm" type="button" data-rm="' + esc(k) + '">شيل</button></div>';
+      }).join('');
+      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="checkout">كمّل الطلب</button>';
+    } else if (step === 'checkout') {
+      db.innerHTML =
+        '<div class="fld"><span>طريقة الاستلام</span><div class="seg"><label><input type="radio" name="mode" value="pickup"' + (form.mode === 'pickup' ? ' checked' : '') + '>استلام من المحل<small>الدوار السابع</small></label><label><input type="radio" name="mode" value="delivery"' + (form.mode === 'delivery' ? ' checked' : '') + '>توصيل<small>+' + money(DELIVERY) + '</small></label></div></div>' +
+        '<label class="fld" id="f-name"><span>الاسم</span><input autocomplete="name" value="' + esc(form.name || '') + '"><div class="err">اكتب اسمك</div></label>' +
+        '<label class="fld" id="f-phone"><span>رقم الهاتف</span><input type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="07X XXX XXXX" value="' + esc(form.phone || '') + '"><div class="err">اكتب رقم أردني صحيح (07X XXX XXXX)</div></label>' +
+        (form.mode === 'delivery' ? '<label class="fld" id="f-addr"><span>العنوان</span><textarea autocomplete="street-address" placeholder="المنطقة، الشارع، البناية، الطابق">' + esc(form.addr || '') + '</textarea><div class="err">اكتب العنوان</div></label>' : '') +
+        '<div class="fld"><span>الوقت</span><div class="seg"><label><input type="radio" name="when" value="asap"' + (form.when === 'asap' ? ' checked' : '') + '>بأسرع وقت<small>تقريباً ٢٠ دقيقة</small></label><label><input type="radio" name="when" value="later"' + (form.when === 'later' ? ' checked' : '') + '>وقت معيّن<small>اختار الساعة</small></label></div></div>' +
+        (form.when === 'later' ? '<label class="fld" id="f-time"><span>الساعة</span><input type="time" dir="ltr" value="' + esc(form.time || '') + '"><div class="err">اختار الساعة</div></label>' : '') +
+        '<label class="fld"><span>ملاحظات (اختياري)</span><textarea id="f-note" placeholder="مثلاً: بدون سكر">' + esc(form.note || '') + '</textarea></label>' +
+        '<div class="fld"><span>الدفع</span><div class="seg"><label><input type="radio" name="pay" value="cash" checked>كاش<small>عند الاستلام</small></label><label class="off"><span class="soon">قريباً</span><input type="radio" name="pay" value="card" disabled>بطاقة / CliQ<small>مش مفعّل لسا</small></label></div></div>';
+      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="place">أكّد الطلب · <span class="lat">' + money(subtotal() + (form.mode === 'delivery' ? DELIVERY : 0)) + '</span></button><p style="text-align:center;font-size:12.5px;color:var(--mute);margin-top:10px">نموذج تجريبي: الطلب ما بنبعت لأي جهة.</p>';
+    } else {
+      var o = form.last;
+      db.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>وصلنا طلبك!</h4><div>رقم الطلب</div><div class="no">' + o.id + '</div><div>' + (o.mode === 'delivery' ? 'رح يوصلك' : 'جاهز للاستلام') + ' ' + (o.when === 'asap' ? 'خلال ٢٠ دقيقة تقريباً' : 'الساعة ' + esc(o.time)) + '.</div>' +
+        '<div class="recap">' + o.items.map(function (x) { return '<div><span>' + x[1] + ' × ' + esc(x[0]) + '</span><span class="lat">' + money(x[2]) + '</span></div>'; }).join('') + '<div style="border-top:1px solid rgba(26,23,24,.2);margin-top:6px;padding-top:8px;font-weight:700"><span>الإجمالي · كاش</span><span class="lat">' + money(o.total) + '</span></div></div></div>';
+      df.innerHTML = '<button class="pill full" type="button" data-go="close">تمام</button>';
+    }
+  }
+  function readForm() {
+    var v = function (id) { var el = document.querySelector('#' + id + ' input, #' + id + ' textarea'); return el ? el.value.trim() : ''; };
+    form.name = v('f-name'); form.phone = v('f-phone'); if (form.mode === 'delivery') form.addr = v('f-addr'); if (form.when === 'later') form.time = v('f-time');
+    var n = document.getElementById('f-note'); form.note = n ? n.value.trim() : '';
+  }
+  function validate() {
+    readForm(); var ok = true;
+    function chk(id, good) { var el = document.getElementById(id); if (!el) return; el.classList.toggle('bad', !good); if (!good && ok) { ok = false; var i = el.querySelector('input,textarea'); i && i.focus(); } }
+    chk('f-name', form.name.length >= 2);
+    chk('f-phone', /^(\+?962|0)7[789]\d{7}$/.test(form.phone.replace(/[\s-]/g, '')));
+    if (form.mode === 'delivery') chk('f-addr', (form.addr || '').length >= 6);
+    if (form.when === 'later') chk('f-time', !!form.time);
+    return ok;
+  }
+  db.addEventListener('click', function (e) {
+    var q = e.target.closest('[data-q]'), r = e.target.closest('[data-rm]');
+    if (q) { var k = q.dataset.k; bag[k] = Math.max(0, Math.min(20, bag[k] + +q.dataset.q)); if (!bag[k]) delete bag[k]; }
+    else if (r) delete bag[r.dataset.rm]; else return;
+    save(); paint(); render(); upd();
+  });
+  db.addEventListener('input', function (e) { var f = e.target.closest('.fld.bad'); if (f) f.classList.remove('bad'); });
+  db.addEventListener('change', function (e) {
+    var t = e.target; if (t.name === 'mode' || t.name === 'when') { readForm(); form[t.name] = t.value; paint(); }
+  });
+  df.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-go]'); if (!b) return; var go = b.dataset.go;
+    if (go === 'menu') { closeCart(); document.getElementById('menu').scrollIntoView({ behavior: 'smooth' }); }
+    else if (go === 'checkout') { step = 'checkout'; paint(); db.scrollTop = 0; }
+    else if (go === 'close') closeCart();
+    else if (go === 'place') {
+      if (!validate()) return;
+      var items = Object.keys(bag).map(function (k) { return [k, bag[k], bag[k] * ITEMS[k][4]]; });
+      var o = { id: 'PK-' + String(Date.now()).slice(-5), items: items, total: subtotal() + (form.mode === 'delivery' ? DELIVERY : 0), mode: form.mode, when: form.when, time: form.time, name: form.name, phone: form.phone, addr: form.addr, note: form.note, pay: 'cash', at: new Date().toISOString() };
+      try { var all = JSON.parse(localStorage.getItem('peak-orders') || '[]'); all.unshift(o); localStorage.setItem('peak-orders', JSON.stringify(all.slice(0, 20))); } catch (er) {}
+      form.last = o; bag = {}; save(); render(); step = 'done'; paint(); upd();
+    }
+  });
+  render(); upd();
 
   var dg = document.getElementById('dg'), peek = document.getElementById('peek');
   function toggle() { var o = dg.classList.toggle('open'); peek.textContent = o ? 'سكّر الكاسة' : 'افتح الكاسة'; }
