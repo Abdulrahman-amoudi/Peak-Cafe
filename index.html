@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>peak — Amman</title>
-<meta name="description" content="peak. crumble & matcha at 7th circle, Amman.">
+<meta name="description" content="peak — crumble & matcha at 7th circle, Amman. Order online for pickup or delivery.">
+<meta name="theme-color" content="#f7f5ee">
+<meta property="og:title" content="peak — crumble & matcha"><meta property="og:description" content="7th circle, Amman. Order online for pickup or delivery."><meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4b6ca'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial Rounded MT Bold,Arial' font-weight='700' font-size='40' fill='%23cf6e91'%3Ep%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Fredoka:wght@600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -192,7 +195,45 @@ footer p{color:var(--mute);font-size:13px}
 .done .no{font-family:"Inter Tight";font-weight:800;font-size:22px;color:var(--pink);direction:ltr;display:inline-block;margin:6px 0 14px}
 .recap{text-align:start;border:1px solid rgba(26,23,24,.2);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:14px;background:#fff}
 .recap div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.draw .ln{stroke-dashoffset:0}}
+.hero h1 span{display:inline-block;animation:rise .9s cubic-bezier(.2,.9,.2,1.1) both}
+.hero h1 span:nth-child(2){animation-delay:.07s}.hero h1 span:nth-child(3){animation-delay:.14s}.hero h1 span:nth-child(4){animation-delay:.21s}
+.hero .what,.hero .meta{animation:fade .8s .45s both}
+@keyframes rise{from{transform:translateY(60%) rotate(4deg);opacity:0}}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.it .ic,.ci .ic{transition:background .25s,transform .25s}
+.it:hover .ic{background:var(--blush);transform:rotate(-6deg) scale(1.06)}
+.add.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{40%{transform:scale(1.28)}}
+.fly{position:fixed;z-index:40;width:44px;height:44px;border-radius:50%;background:var(--blush);display:grid;place-items:center;pointer-events:none;box-shadow:0 10px 24px -8px rgba(26,23,24,.4)}
+.fly svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cart-btn.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bump{35%{transform:scale(1.14) rotate(-4deg)}}
+.cart-btn .n.tick{animation:pop .4s cubic-bezier(.3,1.6,.5,1)}
+.toast{position:fixed;top:82px;left:50%;z-index:40;transform:translate(-50%,-14px);opacity:0;background:var(--ink);color:var(--paper);border-radius:999px;padding:9px 18px;font-size:14px;transition:opacity .3s,transform .35s cubic-bezier(.2,.9,.2,1.2);pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.d-b>*{animation:slideIn .45s cubic-bezier(.2,.8,.2,1) both}
+.d-b>*:nth-child(2){animation-delay:.04s}.d-b>*:nth-child(3){animation-delay:.08s}.d-b>*:nth-child(4){animation-delay:.12s}.d-b>*:nth-child(5){animation-delay:.16s}.d-b>*:nth-child(6){animation-delay:.2s}.d-b>*:nth-child(n+7){animation-delay:.24s}
+.d-b.back>*{animation-name:slideBack}
+.d-b.still>*{animation:none}
+@keyframes slideIn{from{opacity:0;transform:translateX(-22px)}}
+@keyframes slideBack{from{opacity:0;transform:translateX(22px)}}
+.ci.out{animation:out .32s ease-in forwards!important}
+@keyframes out{to{opacity:0;transform:translateX(30px);height:0;padding:0;margin:0;border-width:0}}
+.qty span.flip{animation:pop .3s}
+.tot .v.g{transition:color .3s}.tot .v.g.flash{color:var(--pink)}
+.steps span{transition:border-color .4s,color .3s}
+.pill.busy{pointer-events:none;color:transparent;position:relative}
+.pill.busy::after{content:"";position:absolute;inset:0;margin:auto;width:20px;height:20px;border-radius:50%;border:2.5px solid #fff;border-top-color:transparent;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.done .ok{animation:okIn .6s cubic-bezier(.3,1.6,.5,1) both}
+.done .ok path{stroke-dasharray:24;stroke-dashoffset:24;animation:draw .5s .35s ease-out forwards}
+@keyframes okIn{from{transform:scale(0)}}
+.done .no{animation:fade .6s .5s both}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}*{animation:none!important;transition:none!important}.draw .ln{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
@@ -205,7 +246,7 @@ footer p{color:var(--mute);font-size:13px}
 
 <main id="top">
 <section class="hero" style="padding-top:44px;border:0"><div class="w">
-  <h1 class="mark lat">peak</h1><p class="what lat">crumble <span>&amp;</span> matcha</p>
+  <h1 class="mark lat" aria-label="peak"><span>p</span><span>e</span><span>a</span><span>k</span></h1><p class="what lat">crumble <span>&amp;</span> matcha</p>
   <div class="art draw" aria-hidden="true">
     <!-- the counter from their soft-opening poster, redrawn as line art -->
     <svg viewBox="0 0 520 300">
@@ -303,6 +344,7 @@ footer p{color:var(--mute);font-size:13px}
 </div></footer>
 
 <div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">شوف السلة</button></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="السلة">
   <div class="d-h"><h3 id="d-title">cart</h3><button class="x" type="button" id="d-x" aria-label="إغلاق">×</button></div>
@@ -352,9 +394,23 @@ footer p{color:var(--mute);font-size:13px}
   var DELIVERY = 1.5, step = 'cart', form = { mode: 'pickup', when: 'asap', pay: 'cash' };
   g.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
-    var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save(); render(); upd();
+    var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save();
+    fly(b, m); render(); var nb = g.querySelector('.add[data-c="' + b.dataset.c + '"][data-i="' + b.dataset.i + '"]'); if (nb) nb.classList.add('pop');
+    toast('انضاف ' + m[0] + ' للسلة'); upd(true);
   });
-  function upd() {
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fly(from, m) {
+    var cb = document.getElementById('cart-open'); if (RM || !cb.animate) return;
+    var a = from.getBoundingClientRect(), z = cb.getBoundingClientRect(), d = document.createElement('div');
+    d.className = 'fly'; d.innerHTML = '<svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg>'; d.style.left = (a.left + a.width / 2 - 22) + 'px'; d.style.top = (a.top + a.height / 2 - 22) + 'px';
+    document.body.appendChild(d);
+    var dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
+    d.animate([{ transform: 'translate(0,0) scale(1)' }, { transform: 'translate(' + dx * .5 + 'px,' + (dy * .5 - 90) + 'px) scale(1.1)', offset: .45 }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.3)', opacity: .2 }], { duration: 750, easing: 'cubic-bezier(.4,0,.2,1)' }).onfinish = function () {
+      d.remove(); cb.classList.remove('bump'); void cb.offsetWidth; cb.classList.add('bump'); var n = document.getElementById('cart-n'); n.classList.remove('tick'); void n.offsetWidth; n.classList.add('tick');
+    };
+  }
+  function toast(t) { var el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove('on'); }, 1600); }
+  function upd(added) {
     var n = count();
     document.getElementById('cart-n').textContent = n || '';
     document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b>' + money(subtotal()) + '</b>' : '';
@@ -371,7 +427,11 @@ footer p{color:var(--mute);font-size:13px}
     var sub = subtotal(), del = form.mode === 'delivery' ? DELIVERY : 0;
     return '<div class="tot"><span>المجموع</span><span class="v">' + money(sub) + '</span>' + (form.mode === 'delivery' ? '<span>التوصيل</span><span class="v">' + money(del) + '</span>' : '') + '<span class="g">الإجمالي</span><span class="v g">' + money(sub + del) + '</span></div>';
   }
-  function paint() {
+  var STEPS = ['cart', 'checkout', 'done'], lastStep = 'cart';
+  function paint(still) {
+    db.classList.remove('back', 'still'); void db.offsetWidth;
+    if (still) db.classList.add('still'); else if (STEPS.indexOf(step) < STEPS.indexOf(lastStep)) db.classList.add('back');
+    lastStep = step;
     document.querySelectorAll('#steps span').forEach(function (x) { x.classList.toggle('on', x.dataset.s === step); });
     document.getElementById('d-title').textContent = step === 'checkout' ? 'checkout' : step === 'done' ? 'thank you' : 'cart';
     if (step === 'cart') {
@@ -415,13 +475,17 @@ footer p{color:var(--mute);font-size:13px}
   }
   db.addEventListener('click', function (e) {
     var q = e.target.closest('[data-q]'), r = e.target.closest('[data-rm]');
-    if (q) { var k = q.dataset.k; bag[k] = Math.max(0, Math.min(20, bag[k] + +q.dataset.q)); if (!bag[k]) delete bag[k]; }
-    else if (r) delete bag[r.dataset.rm]; else return;
-    save(); paint(); render(); upd();
+    var key = q ? q.dataset.k : r ? r.dataset.rm : null; if (!key) return;
+    var row = (q || r).closest('.ci');
+    if (q) { bag[key] = Math.max(0, Math.min(20, bag[key] + +q.dataset.q)); if (!bag[key]) delete bag[key]; } else delete bag[key];
+    save(); render(); upd();
+    if (!bag[key]) { row.classList.add('out'); setTimeout(function () { paint(true); flash(); }, 300); }
+    else { paint(true); var sp = db.querySelector('.ci [data-k="' + CSS.escape(key) + '"]'); sp = sp && sp.parentNode.querySelector('span'); if (sp) sp.classList.add('flip'); flash(); }
   });
+  function flash() { var v = df.querySelector('.v.g'); if (v) { v.classList.add('flash'); setTimeout(function () { v.classList.remove('flash'); }, 350); } }
   db.addEventListener('input', function (e) { var f = e.target.closest('.fld.bad'); if (f) f.classList.remove('bad'); });
   db.addEventListener('change', function (e) {
-    var t = e.target; if (t.name === 'mode' || t.name === 'when') { readForm(); form[t.name] = t.value; paint(); }
+    var t = e.target; if (t.name === 'mode' || t.name === 'when') { readForm(); form[t.name] = t.value; var st = db.scrollTop; paint(true); db.scrollTop = st; flash(); }
   });
   df.addEventListener('click', function (e) {
     var b = e.target.closest('[data-go]'); if (!b) return; var go = b.dataset.go;
@@ -429,14 +493,20 @@ footer p{color:var(--mute);font-size:13px}
     else if (go === 'checkout') { step = 'checkout'; paint(); db.scrollTop = 0; }
     else if (go === 'close') closeCart();
     else if (go === 'place') {
-      if (!validate()) return;
+      if (!validate()) { b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); return; }
+      b.classList.add('busy');
       var items = Object.keys(bag).map(function (k) { return [k, bag[k], bag[k] * ITEMS[k][4]]; });
       var o = { id: 'PK-' + String(Date.now()).slice(-5), items: items, total: subtotal() + (form.mode === 'delivery' ? DELIVERY : 0), mode: form.mode, when: form.when, time: form.time, name: form.name, phone: form.phone, addr: form.addr, note: form.note, pay: 'cash', at: new Date().toISOString() };
       try { var all = JSON.parse(localStorage.getItem('peak-orders') || '[]'); all.unshift(o); localStorage.setItem('peak-orders', JSON.stringify(all.slice(0, 20))); } catch (er) {}
-      form.last = o; bag = {}; save(); render(); step = 'done'; paint(); upd();
+      setTimeout(function () { form.last = o; bag = {}; save(); render(); step = 'done'; paint(); upd(); }, 900);
     }
   });
   render(); upd();
+  if ('IntersectionObserver' in window && !RM) {
+    var rvs = document.querySelectorAll('.sh, .parts, .cat, .story blockquote, .visit-g, footer .mark');
+    var ro = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }); }, { threshold: .15 });
+    rvs.forEach(function (el, i) { el.classList.add('rv'); if (el.classList.contains('cat')) el.style.transitionDelay = (Array.prototype.indexOf.call(el.parentNode.children, el) * 0.1) + 's'; ro.observe(el); });
+  }
 
   var dg = document.getElementById('dg'), peek = document.getElementById('peek');
   function toggle() { var o = dg.classList.toggle('open'); peek.textContent = o ? 'سكّر الكاسة' : 'افتح الكاسة'; }
