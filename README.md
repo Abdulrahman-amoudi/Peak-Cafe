@@ -6,7 +6,7 @@ One static file: `index.html`. No build step.
 
 - Menu with cart, checkout (pickup or delivery, time, notes) and order confirmation
 - Payment is not connected yet: cash only, card/CliQ marked "coming soon"
-- Menu items and prices are placeholders until the real menu is added
+- Menu and prices taken from peak's own menu page; product photos are served through Vercel image optimisation from that page
 - Orders are saved only in the visitor's browser for now
 
 Host: import the repo on Vercel or Netlify (framework: none), or enable GitHub Pages on `main`.

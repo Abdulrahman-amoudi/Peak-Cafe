@@ -20,11 +20,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://peak-cafe.vercel.app/og.png">
 <link rel="apple-touch-icon" href="/og.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4b6ca'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial Rounded MT Bold,Arial' font-weight='700' font-size='40' fill='%23cf6e91'%3Ep%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e483aa'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial Rounded MT Bold,Arial' font-weight='700' font-size='40' fill='%23ffffff'%3Ep%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Fredoka:wght@600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f7f5ee;--pink:#cf6e91;--blush:#f4b6ca;--blush2:#fbe3ea;--ink:#1a1718;--mute:#77706f;--rule:#1a1718}
+:root{--paper:#f7f5ee;--pink:#e483aa;--pinkd:#c9628d;--blush:#f6c3d7;--blush2:#fce6ee;--ink:#1a1718;--mute:#77706f;--rule:#1a1718}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -37,7 +37,8 @@ a{color:inherit;text-decoration:none}
 /* header */
 header{position:sticky;top:0;z-index:10;background:var(--paper)}
 header .w{display:flex;align-items:center;justify-content:space-between;height:68px;border-bottom:1px solid var(--rule)}
-header .mark{font-size:30px}
+header .logo{height:30px;width:auto;fill:var(--pink);display:block}
+.logo{fill:var(--pink)}
 header nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 header nav a{position:relative}
 header nav a::after{content:"";position:absolute;inset:auto 0 -3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .3s}
@@ -47,7 +48,8 @@ header nav a:hover::after{transform:none}
 /* hero = their poster */
 .hero{padding:44px 0 0}
 .hero .w{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:end;min-height:calc(100vh - 68px - 44px);padding-bottom:28px;border-bottom:1px solid var(--rule)}
-.hero h1{font-size:clamp(130px,24vw,330px);line-height:.8;letter-spacing:-.045em;text-align:left;grid-column:1/-1;align-self:start;margin-left:-.04em}
+.hero h1{grid-column:1/-1;align-self:start;direction:ltr;text-align:left;line-height:0}
+.hero h1 .logo{width:min(760px,62vw);height:auto;animation:rise 1s cubic-bezier(.2,.9,.2,1.05) both}
 .hero .what{grid-column:1/-1;font-weight:800;font-size:clamp(30px,4.4vw,60px);letter-spacing:-.045em;line-height:1;text-align:left;margin-top:-6px}
 .hero .what span{color:var(--pink);margin:0 .22em}
 .hero h1 span{display:block}
@@ -81,7 +83,7 @@ section{padding:110px 0;border-bottom:1px solid var(--rule)}
 #inside .sh h2{color:var(--ink)}
 #inside .sh .caps,#inside .parts p{color:rgba(26,23,24,.65)}
 footer{background:var(--blush)}
-footer .mark{color:var(--paper)!important}
+footer .flogo{fill:var(--paper);width:min(520px,60vw);height:auto}
 footer p{color:var(--ink)!important}
 .diagram{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
 .diagram svg{width:100%;max-width:440px;justify-self:center}
@@ -107,26 +109,39 @@ footer p{color:var(--ink)!important}
 .peek:hover{background:var(--ink);color:var(--paper)}
 @media(max-width:860px){.diagram{grid-template-columns:1fr}}
 
+.fine{margin-top:34px;color:var(--mute);font-size:13px}
 /* menu */
-.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:0 44px}
-.cat h3{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px}
-.cat h3 .lat{font-weight:800;font-size:30px;letter-spacing:-.04em;color:var(--pink)}
-.cat h3 span:last-child{font-size:15px;font-weight:500;color:var(--mute)}
-.it{display:grid;grid-template-columns:44px 1fr auto auto;gap:2px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(22,21,21,.18)}
-.it b{font-weight:700;font-size:17px}
-.it .p{font-family:"Inter Tight";font-weight:700;font-size:16px;direction:ltr;color:var(--mute)}
-.it .ic,.ci .ic{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--blush2);display:grid;place-items:center}
-.it .ic svg,.ci .ic svg{width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.it small{grid-column:2/3;color:var(--mute);font-size:14px;line-height:1.5}
-.it small .lat{font-size:13px}
-.add{grid-row:1/3;grid-column:4;color:var(--ink);width:34px;height:34px;border-radius:50%;border:1px solid var(--ink);background:none;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,transform .15s}
+.tabs{position:sticky;top:68px;z-index:5;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:14px 0;margin:-14px 0 26px;background:var(--paper)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1px solid var(--ink);background:none;color:var(--ink);font:inherit;font-weight:500;font-size:15px;padding:8px 18px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.tabs button:hover{background:var(--blush2)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px 22px}
+.it{display:flex;flex-direction:column;border-radius:22px;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.it:hover{transform:translateY(-4px)}
+.ph{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:var(--blush2);display:grid;place-items:center}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .5s;opacity:0}
+.ph img.ok{opacity:1}
+.it:hover .ph img{transform:scale(1.05)}
+.ph .ic{position:absolute;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.7);display:grid;place-items:center}
+.ph img.ok+.ic{display:none}
+.ph .ic svg,.ci .ic svg{width:28px;height:28px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ph .sz{position:absolute;top:10px;right:10px;background:rgba(247,245,238,.92);border-radius:999px;font-family:"Inter Tight";font-weight:700;font-size:11px;letter-spacing:.08em;padding:3px 9px;direction:ltr}
+.it .tx{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:start;padding:14px 4px 0}
+.it b{font-weight:700;font-size:17px;line-height:1.35}
+.it .p{font-family:"Inter Tight";font-weight:700;font-size:16px;direction:ltr;white-space:nowrap}
+.it small{grid-column:1/-1;color:var(--mute);font-size:14px;line-height:1.5}
+.it small .lat{font-size:13px;color:var(--pinkd)}
+.it .row{display:flex;justify-content:space-between;align-items:center;padding:12px 4px 0;margin-top:auto}
+.add{position:relative;color:var(--ink);height:40px;border-radius:999px;border:1px solid var(--ink);background:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0 16px;font:inherit;font-weight:500;font-size:14px;transition:background .2s,color .2s,transform .15s,border-color .2s}
 .add svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
 .add:hover{background:var(--ink);color:var(--paper)}
-.add:active{transform:scale(.92)}
+.add:active{transform:scale(.94)}
 .add.on{background:var(--pink);border-color:var(--pink);color:#fff}
-.fine{margin-top:34px;color:var(--mute);font-size:13px}
-@media(max-width:960px){.menu{grid-template-columns:1fr 1fr;gap:40px 36px}}
-@media(max-width:620px){.menu{grid-template-columns:1fr}}
+.it .q{font-size:13px;color:var(--mute)}
+.grid.swap .it{animation:cardIn .55s cubic-bezier(.22,1,.36,1) both}
+.grid.swap .it:nth-child(2){animation-delay:.05s}.grid.swap .it:nth-child(3){animation-delay:.1s}.grid.swap .it:nth-child(4){animation-delay:.15s}.grid.swap .it:nth-child(n+5){animation-delay:.2s}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}}
 
 /* story */
 .story .w{display:grid;grid-template-columns:160px 1fr;gap:28px}
@@ -151,7 +166,7 @@ footer p{color:var(--ink)!important}
 
 footer{padding:60px 0 120px}
 footer .w{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
-footer .mark{font-size:clamp(90px,16vw,220px)}
+
 footer p{color:var(--mute);font-size:13px}
 
 /* order bar */
@@ -183,7 +198,8 @@ footer p{color:var(--mute);font-size:13px}
 .steps span.on{border-color:var(--pink);color:var(--ink);font-weight:700}
 .d-b{flex:1;overflow-y:auto;padding:8px 24px 24px;overscroll-behavior:contain}
 .d-f{border-top:1px solid var(--ink);padding:18px 24px 22px;background:var(--paper)}
-.ci{display:grid;grid-template-columns:44px 1fr auto;gap:4px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,23,24,.18)}
+.ci .ic{width:52px;height:52px;border-radius:14px;overflow:hidden;background:var(--blush2);display:grid;place-items:center}.ci .ic img{width:100%;height:100%;object-fit:cover}
+.ci{display:grid;grid-template-columns:52px 1fr auto;gap:4px 14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,23,24,.18)}
 .ci .ic{grid-row:1/3}
 .ci b{font-size:16px}
 .ci .lp{font-family:"Inter Tight";font-weight:700;direction:ltr;text-align:left}
@@ -218,27 +234,23 @@ footer p{color:var(--mute);font-size:13px}
 .done .no{font-family:"Inter Tight";font-weight:800;font-size:22px;color:var(--pink);direction:ltr;display:inline-block;margin:6px 0 14px}
 .recap{text-align:start;border:1px solid rgba(26,23,24,.2);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:14px;background:#fff}
 .recap div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
-.hero h1 span{display:inline-block;animation:rise .9s cubic-bezier(.2,.9,.2,1.1) both}
-.hero h1 span:nth-child(2){animation-delay:.07s}.hero h1 span:nth-child(3){animation-delay:.14s}.hero h1 span:nth-child(4){animation-delay:.21s}
 .hero .what,.hero .meta{animation:fade .8s .45s both}
-@keyframes rise{from{transform:translateY(60%) rotate(4deg);opacity:0}}
+@keyframes rise{from{transform:translateY(40px) scale(.96);opacity:0}}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
-.it .ic,.ci .ic{transition:background .25s,transform .25s}
-.it:hover .ic{background:var(--blush);transform:rotate(-6deg) scale(1.06)}
 .add.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
 .add{position:relative}
 .add .ring{position:absolute;inset:-1px;border-radius:50%;border:2px solid var(--pink);animation:ring .6s cubic-bezier(.22,1,.36,1) forwards;pointer-events:none}
 @keyframes ring{to{transform:scale(2.1);opacity:0}}
-.it{transition:background-color .6s}
-.it.glow{animation:glow 1.1s ease-out}
-@keyframes glow{0%{background:rgba(244,182,202,.55)}100%{background:transparent}}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(228,131,170,.6)}100%{box-shadow:0 0 0 18px rgba(228,131,170,0)}}
+.it.glow .ph{animation:glow .9s ease-out}
 .bag.ping .w{animation:ping .5s cubic-bezier(.3,1.6,.5,1)}
 @keyframes ping{40%{transform:translateY(-5px)}}
 .fly{will-change:transform,opacity}
 @keyframes pop{40%{transform:scale(1.28)}}
-.fly{position:fixed;z-index:40;width:44px;height:44px;border-radius:50%;background:var(--blush);display:grid;place-items:center;pointer-events:none;box-shadow:0 10px 24px -8px rgba(26,23,24,.4)}
+.fly img{width:100%;height:100%;object-fit:cover}
+.fly{position:fixed;z-index:40;width:56px;height:56px;border-radius:50%;overflow:hidden;background:var(--blush);display:grid;place-items:center;pointer-events:none;box-shadow:0 10px 24px -8px rgba(26,23,24,.4)}
 .fly svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .cart-btn.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
 @keyframes bump{35%{transform:scale(1.14) rotate(-4deg)}}
@@ -269,16 +281,17 @@ footer p{color:var(--mute);font-size:13px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="0 0 678 268"><path fill-rule="evenodd" d="M4.4 262.7C4.1 261.9 4.1 228.7 4.2 188.9C4.6 107.5 4.3 111.9 12.4 94.5C20.4 77.5 33.4 64.3 50.5 56.0C60.9 51.0 68.3 49.1 80.2 48.3C106.0 46.7 129.5 56.5 147.6 76.4C161.1 91.1 167.8 107.9 168.7 129.0C169.7 152.0 161.9 172.7 146.1 189.4C123.6 213.0 88.1 221.4 59.9 209.5C56.4 208.0 52.5 206.6 51.2 206.3L49.0 205.8L49.0 234.9L49.0 264.0L27.0 264.0C9.4 264.0 4.8 263.7 4.4 262.7ZM251.5 213.9C239.2 212.1 223.6 206.2 214.3 199.9C203.5 192.5 191.3 178.6 185.8 167.5C177.9 151.6 175.4 134.4 178.5 116.8C183.7 86.8 206.2 61.5 236.5 51.5C246.3 48.2 262.9 47.1 273.5 48.9C282.6 50.5 294.3 55.1 302.1 60.2C321.6 72.7 333.0 89.7 337.6 112.8C339.0 120.2 339.5 139.5 338.4 143.8L337.8 146.0L281.9 146.0C237.8 146.0 226.0 146.3 226.0 147.2C226.0 149.6 231.9 158.7 235.4 161.8C253.0 177.3 278.8 176.6 298.9 160.1L303.3 156.5L309.7 163.5C320.0 174.7 330.0 186.7 330.0 187.8C330.0 189.5 320.1 197.8 313.6 201.7C295.5 212.2 272.1 216.9 251.5 213.9ZM412.0 212.6C408.4 211.8 402.4 210.0 398.6 208.6C377.1 200.5 358.8 181.2 351.0 158.5C347.6 148.8 347.5 148.0 347.5 133.0C347.5 115.5 348.7 109.6 354.6 97.1C362.7 79.8 375.9 66.1 392.3 58.1C404.7 52.1 413.6 50.0 427.2 50.0C442.0 50.0 453.3 53.4 464.7 61.1C469.7 64.6 470.0 64.6 470.0 61.8C470.0 60.5 470.3 58.5 470.6 57.2C471.2 55.0 471.3 55.0 492.6 55.0L514.0 55.0L514.0 133.0L514.0 211.0L492.6 211.0C471.3 211.0 471.2 211.0 470.6 208.8C470.3 207.5 470.0 205.3 470.0 203.8C470.0 202.2 469.6 201.0 469.1 201.0C468.6 201.0 465.6 202.6 462.4 204.5C449.3 212.4 427.5 215.9 412.0 212.6ZM530.2 211.3L524.0 210.9L524.0 139.2C523.9 99.8 523.8 53.7 523.7 36.8C523.6 16.1 523.8 5.8 524.6 5.0C525.3 4.3 533.0 4.1 547.6 4.2L569.5 4.5L569.6 56.2C569.7 84.7 570.0 108.1 570.4 108.2C571.3 108.6 573.2 106.7 596.5 82.2L618.4 59.0L645.2 59.0C659.9 59.0 672.0 59.2 672.0 59.5C672.0 60.0 664.6 68.1 626.5 108.8C616.6 119.4 608.4 128.5 608.2 129.0C607.9 129.8 621.4 146.7 645.5 175.6C651.6 182.8 660.5 193.6 665.4 199.6L674.3 210.5L648.4 210.8C634.2 210.9 622.0 210.8 621.4 210.6C620.8 210.4 609.1 197.0 595.4 180.9L570.5 151.6L569.7 181.0C569.2 197.2 568.7 210.6 568.6 210.8C568.0 211.3 536.5 211.8 530.2 211.3ZM94.3 167.5C106.4 164.4 114.2 158.0 119.3 147.2C122.2 141.2 122.5 139.5 122.5 131.5C122.5 123.5 122.2 121.8 119.4 115.9C106.0 87.6 66.1 87.6 52.2 115.9C49.8 120.9 49.5 122.6 49.5 131.5C49.5 140.3 49.8 142.2 52.2 147.2C57.0 157.5 67.4 165.8 78.1 167.9C84.8 169.2 88.0 169.1 94.3 167.5ZM444.7 165.8C455.7 161.7 464.9 150.1 467.1 137.2C469.9 121.7 461.0 105.1 446.2 98.2C441.2 95.8 439.3 95.5 430.5 95.5C417.7 95.5 412.6 97.6 404.2 106.3C396.0 114.9 393.7 121.3 394.2 133.5C394.7 144.2 397.5 150.6 404.8 157.9C415.3 168.4 430.1 171.3 444.7 165.8ZM292.9 108.4C293.6 107.7 288.8 101.0 285.0 97.6C279.6 92.7 274.3 90.3 266.7 89.0C252.9 86.8 239.6 92.3 230.8 103.9C227.4 108.4 227.4 108.8 230.8 109.2C234.2 109.6 292.4 108.9 292.9 108.4Z"/></symbol></svg>
 
 <header><div class="w">
-  <a class="mark lat" href="#top" aria-label="peak">peak</a>
+  <a class="logo-a" href="#top" aria-label="peak"><svg class="logo" viewBox="0 0 678 268"><use href="#logo"/></svg></a>
   <nav><a href="#inside">شو جوّا الكاسة</a><a href="#menu">المنيو</a><a href="#story">قصتنا</a><a href="#visit">زورونا</a></nav>
   <button class="cart-btn" id="cart-open" type="button" aria-label="السلة"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>السلة<span class="n" id="cart-n"></span></button>
 </div></header>
 
 <main id="top">
 <section class="hero" style="padding-top:44px;border:0"><div class="w">
-  <h1 class="mark lat" aria-label="peak"><span>p</span><span>e</span><span>a</span><span>k</span></h1><p class="what lat">crumble <span>&amp;</span> matcha</p>
+  <h1 aria-label="peak"><svg class="logo" viewBox="0 0 678 268"><use href="#logo"/></svg></h1><p class="what lat">crumble <span>&amp;</span> matcha</p>
   <div class="art draw" aria-hidden="true">
     <!-- the counter from their soft-opening poster, redrawn as line art -->
     <svg viewBox="0 0 520 300">
@@ -291,7 +304,7 @@ footer p{color:var(--mute);font-size:13px}
       <path class="ln thin" style="--l:200" d="M104 60 L144 59 M104 68 L144 67"/>
       <path class="ln" style="--l:220" d="M196 84 Q200 58 222 58 Q244 58 246 83"/>
       <path class="ln" style="--l:160" d="M300 82 L304 60 L330 60 L333 81 M316 60 L318 46"/>
-      <text x="268" y="196" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="34" fill="#161515">peak</text>
+      <use href="#logo" x="226" y="168" width="84" height="33" fill="#161515"/>
     </svg>
   </div>
   <div class="meta">
@@ -302,7 +315,7 @@ footer p{color:var(--mute);font-size:13px}
 </div></section>
 
 <section id="inside"><div class="w">
-  <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة وحدة، أربع طبقات.</small></h2></div>
+  <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة واحدة، أربع طبقات.</small></h2></div>
   <div class="diagram" id="dg">
     <svg viewBox="0 0 300 380" aria-hidden="true">
       <defs><clipPath id="lvl"><rect class="lvl" x="30" y="140" width="240" height="230"/></clipPath><clipPath id="cupc"><path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/></clipPath></defs>
@@ -315,7 +328,7 @@ footer p{color:var(--mute);font-size:13px}
         <g class="L L1"><rect x="40" y="150" width="220" height="48" fill="#e2a868"/><circle cx="150" cy="166" r="3" fill="#c48a4c"/><circle cx="178" cy="176" r="2.5" fill="#c48a4c"/><circle cx="200" cy="162" r="3" fill="#c48a4c"/><text x="102" y="178" fill="#1a1718">01</text></g>
       </g></g>
       <path class="ln" d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/>
-      <text x="196" y="330" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="22" fill="#fffaf6">peak</text>
+      <use href="#logo" x="168" y="314" width="56" height="22" fill="#fffaf6"/>
       <g class="lid"><g class="lid-in">
         <path class="ln" d="M60 140 Q66 62 150 58 Q234 62 240 140 Z" fill="rgba(255,255,255,.7)"/>
         <rect class="ln" x="46" y="138" width="208" height="14" rx="7" fill="#fffaf6"/>
@@ -325,10 +338,10 @@ footer p{color:var(--mute);font-size:13px}
     </svg>
     <div>
       <ol class="parts">
-        <li><span class="n">01</span><b>كرمبل مقرمش</b><p>زبدة وطحين وسكر بني، بنخبزه كل يوم.</p></li>
-        <li><span class="n">02</span><b>كريمة خفيفة</b><p>ناعمة ومش ثقيلة.</p></li>
-        <li><span class="n">03</span><b>الحشوة</b><p>إنت بتختارها من المنيو.</p></li>
-        <li><span class="n">04</span><b>كرمبل كمان</b><p>لأنه ما في إشي اسمه كرمبل كثير.</p></li>
+        <li><span class="n">01</span><b>كرمبل مقرمش</b><p>زبدة وطحين وسكر بني، يُخبز طازجاً كل يوم.</p></li>
+        <li><span class="n">02</span><b>كاسترد كريمي</b><p>قوام ناعم وخفيف يوازن القرمشة.</p></li>
+        <li><span class="n">03</span><b>الفاكهة</b><p>تفاح أو موز مكرمل أو أناناس، حسب اختيارك.</p></li>
+        <li><span class="n">04</span><b>قاعدة الكرمبل</b><p>طبقة أخيرة تمنح كل ملعقة قرمشتها.</p></li>
       </ol>
       <button class="peek" id="peek" type="button">افتح الكاسة</button>
     </div>
@@ -336,16 +349,17 @@ footer p{color:var(--mute);font-size:13px}
 </div></section>
 
 <section id="menu"><div class="w">
-  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اطلب أونلاين، واستلم من المحل أو خلّينا نوصّلك.</small></h2></div>
-  <div class="menu" id="menu-g"></div>
-  <p class="fine">الأصناف والأسعار هون تجريبية، بنحطّ منيو peak الحقيقي قبل الإطلاق. الدفع الإلكتروني مش مفعّل لسا.</p>
+  <div class="sh"><span class="caps">02 — menu</span><h2>menu<small>اطلب عبر الموقع واستلم طلبك من المحل، أو اختر التوصيل.</small></h2></div>
+  <div class="tabs" id="tabs" role="tablist" aria-label="أقسام القائمة"></div>
+  <div class="grid" id="menu-g"></div>
+  <p class="fine">الأسعار بالدينار الأردني. الدفع الإلكتروني متاح قريباً.</p>
 </div></section>
 
 <section class="story" id="story"><div class="w">
   <span class="caps" style="color:var(--mute);padding-top:14px">03 — story</span>
   <div>
-    <blockquote>كنت متوقع الموضوع ياخذ شهر بالكثير… <em>قعدت ٣ شهور كاملة.</em> بس الحمدلله خلصنا، وبنستناكم.</blockquote>
-    <cite>صاحب peak، من إنستغرام</cite>
+    <blockquote>توقّعتُ أن يستغرق التجهيز شهراً واحداً، <em>فاستغرق ثلاثة أشهر كاملة.</em> والحمد لله، اكتمل العمل ونحن بانتظاركم.</blockquote>
+    <cite>حسان، مؤسس peak</cite>
   </div>
 </div></section>
 
@@ -360,7 +374,7 @@ footer p{color:var(--mute);font-size:13px}
       </dl>
       <div class="links">
         <a class="btn solid" href="https://www.google.com/maps/search/?api=1&query=Peak+7th+circle+Amman" target="_blank" rel="noopener">الاتجاهات</a>
-        <a class="btn" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">راسلنا</a>
+        <a class="btn" href="https://ig.me/m/peak.joo" target="_blank" rel="noopener">تواصل معنا</a>
       </div>
     </div>
     <div class="map"><iframe loading="lazy" title="peak على الخريطة" src="https://www.google.com/maps?q=Peak,+7th+circle,+Amman&output=embed"></iframe></div>
@@ -369,11 +383,11 @@ footer p{color:var(--mute);font-size:13px}
 </main>
 
 <footer><div class="w">
-  <span class="mark lat">peak</span>
-  <p>نموذج تجريبي من واجهة · <span class="lat">@wajiha.jo</span></p>
+  <svg class="logo flogo" viewBox="0 0 678 268" aria-label="peak"><use href="#logo"/></svg>
+  <p>تصميم وتطوير: واجهة · <span class="lat">@wajiha.jo</span></p>
 </div></footer>
 
-<div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">شوف السلة</button></div></div>
+<div class="bag" id="bag"><div class="w"><span class="sum" id="bag-s"></span><button type="button" id="bag-go">عرض السلة</button></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="السلة">
@@ -386,10 +400,51 @@ footer p{color:var(--mute);font-size:13px}
 <script>
 (function () {
   'use strict';
+  var SRC = 'https://peak-menu.mohd-iinfo.workers.dev/';
+  // [name AR, name EN, description, fallback icon, price JD, photo, has M/L]
   var MENU = [
-    ['crumble', 'كرمبل', [['كرمبل لوتس', 'Lotus', 'كريمة، صوص لوتس، كرمبل', 'cookie', 3.5], ['كرمبل نوتيلا', 'Nutella', 'شوكولاتة دافية', 'choc', 3.75], ['كرمبل فراولة', 'Strawberry', 'فراولة طازة وكريمة', 'berry', 3.75], ['كرمبل بستاشيو', 'Pistachio', 'كريمة فستق', 'nut', 4.25]]],
-    ['matcha', 'ماتشا', [['آيس ماتشا لاتيه', 'Iced Matcha Latte', 'ماتشا، حليب، ثلج', 'glass', 3.25], ['ماتشا فراولة', 'Strawberry Matcha', 'فراولة تحت، ماتشا فوق', 'layer', 3.75], ['ماتشا كرمبل', 'Matcha Crumble', 'الاثنين بكاسة وحدة', 'cup', 4.5]]],
-    ['coffee', 'قهوة وغيرها', [['سبانش لاتيه', 'Spanish Latte', 'حليب مكثف وإسبريسو', 'mug', 2.75], ['آيس أمريكانو', 'Iced Americano', 'بسيط ومزبوط', 'ice', 2.25], ['ليمون ونعنع', 'Lemon Mint', 'منعش', 'lemon', 2]]]
+    ['crumble', 'كرمبل', [
+      ['كرمبل التفاح', 'Apple Crumble', 'تفاح دافئ مع الكاسترد', 'cup', 4.5, 'apple-crumble.png', 1],
+      ['كرمبل الموز', 'Banana Crumble', 'موز مكرمل مع الكاسترد', 'cup', 4.5, 'banana-crumble.png', 1],
+      ['كرمبل الأناناس', 'Pineapple Crumble', 'أناناس مع الكاسترد', 'cup', 4.5, 'pineapple-crumble.png', 1]]],
+    ['matcha', 'ماتشا', [
+      ['ماتشا لاتيه كلاسيك', 'Classic Matcha Latte', 'ماتشا يابانية احتفالية نقية', 'glass', 3.5, 'classic-matcha.png', 1],
+      ['ماتشا بالفراولة', 'Strawberry Matcha', 'ماتشا مع الفراولة الطازجة', 'layer', 4, 'strawberry-matcha.png', 1],
+      ['ماتشا بالفانيلا', 'Vanilla Matcha', 'ماتشا مع الفانيلا', 'glass', 4, 'vanilla-matcha.png', 1],
+      ['ماتشا أوبي', 'UBE Matcha', 'ماتشا مع الأوبي', 'layer', 4, 'ube-matcha.png', 1]]],
+    ['cold coffee', 'قهوة باردة', [
+      ['آيس لاتيه', 'Iced Latte', 'إسبريسو مع حليب بارد', 'ice', 3.5, 'coffee-iced-latte.png', 1],
+      ['آيس سبانش لاتيه', 'Iced Spanish Latte', 'حلو وكريمي', 'ice', 3.5, 'coffee-iced-spanish.png', 1],
+      ['لوتس لاتيه', 'Lotus Latte', 'مع لوتس بسكوف', 'ice', 3.5, 'coffee-lotus-latte.png', 1],
+      ['كريم كراميل لاتيه', 'Creme Caramel Latte', 'كراميل وكريمة', 'ice', 4, 'coffee-creme-caramel.png', 1],
+      ['أوبي لاتيه', 'UBE Latte', 'أوبي مع الإسبريسو', 'layer', 4, 'ube-matcha.png', 1],
+      ['آيس أمريكانو', 'Iced Americano', 'إسبريسو مع ماء بارد', 'ice', 3, 'coffee-iced-americano.png', 1]]],
+    ['hot coffee', 'قهوة ساخنة', [
+      ['لاتيه', 'Hot Latte', 'مع رسمة اللاتيه', 'mug', 3, 'coffee-hot-latte.png', 1],
+      ['سبانش لاتيه', 'Hot Spanish Latte', 'حليب مكثّف مع الإسبريسو', 'mug', 3.5, 'coffee-hot-spanish.png', 1],
+      ['أمريكانو', 'Hot Americano', 'إسبريسو مع ماء ساخن', 'mug', 3, 'coffee-hot-americano.png', 1],
+      ['فلات وايت', 'Flat White', 'ريستريتو مع حليب مخفوق ناعم', 'mug', 3.5, 'coffee-flat-white.png', 1],
+      ['إسبريسو', 'Espresso', 'جرعة مركّزة', 'mug', 2, 'coffee-espresso.png', 0]]],
+    ['pudding', 'بودينغ', [
+      ['بودينغ أوريو', 'Oreo Pudding', 'بودينغ كريمي مع أوريو', 'pud', 2.75, 'oreo-pudding.png', 0],
+      ['بودينغ موكا', 'Mocha Pudding', 'إسبريسو وكاكاو', 'pud', 2.75, 'mocha-pudding.png', 0],
+      ['بودينغ جوز الهند', 'Coconut Pudding', 'جوز الهند', 'pud', 2.75, 'coconut-pudding.png', 0],
+      ['بودينغ الشوكولاتة', 'Chocolate Pudding', 'شوكولاتة غنية', 'pud', 2.75, 'chocolate-pudding.png', 0],
+      ['بودينغ لوتس', 'Lotus Pudding', 'مع لوتس بسكوف', 'pud', 2.75, 'lotus-pudding.png', 0]]],
+    ['iced tea', 'شاي مثلج', [
+      ['شاي peak المثلج', 'Peaks Iced Tea', 'خلطة الشاي الاستوائية الخاصة بنا', 'glass', 3.5, 'tropical-icetea.png', 1],
+      ['شاي مثلج بالخوخ', 'Iced Tea Peach', 'بنكهة الخوخ', 'glass', 3, 'peach-icetea.png', 1],
+      ['شاي مثلج بالتوت', 'Mixed Berries Ice Tea', 'توت مشكّل', 'glass', 3, 'berry-icetea.png', 1],
+      ['شاي مثلج بالمانجا', 'Iced Tea Mango', 'بنكهة المانجا', 'glass', 3, 'mango-icetea.png', 1]]],
+    ['sandwiches', 'ساندويشات', [
+      ['حلوم', 'Halloumi', 'حلوم وطماطم وصلصة بيستو', 'sand', 4, 'food-halloumi-sandwich.png', 0],
+      ['تيركي', 'Turkey', 'تيركي مدخّن وجبنة سويسرية', 'sand', 4, 'food-turkey-sandwich.png', 0],
+      ['تشيبوتلي', 'Chipotle', 'دجاج بصلصة التشيبوتلي', 'sand', 5, 'food-chipotle-sandwich.png', 0],
+      ['هني ماستارد', 'Honey Mustard', 'دجاج بصلصة العسل والخردل', 'sand', 5, 'food-honeymustard-sandwich.png', 0],
+      ['بيستو', 'Pesto', 'دجاج مشوي مع بيستو الريحان', 'sand', 5, 'food-pesto-sandwich.png', 0]]],
+    ['salads', 'سلطات', [
+      ['سلطة سيزر بالدجاج', 'Chicken Caesar Salad', 'خس روماني ودجاج', 'salad', 4, 'food-caesar.png', 0],
+      ['سلطة الحلوم', 'Halloumi Salad', 'حلوم مشوي وجرجير', 'salad', 4, 'food-halloumi.png', 0]]]
   ];
   var IC = {
     cookie: '<circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9.5" r="1"/><circle cx="14.5" cy="10" r="1"/><circle cx="11" cy="14.5" r="1"/><circle cx="15" cy="15" r=".8"/>',
@@ -401,21 +456,42 @@ footer p{color:var(--mute);font-size:13px}
     cup: '<path d="M6.5 10h11l-1.3 10.2a1 1 0 0 1-1 .8H8.8a1 1 0 0 1-1-.8z"/><path d="M5 10h14M6.5 10c0-3.3 2.4-5 5.5-5s5.5 1.7 5.5 5"/>',
     mug: '<path d="M5 8h11v7a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16M9 3.5c-.8 1 .8 2 0 3M12.5 3.5c-.8 1 .8 2 0 3"/>',
     ice: '<path d="M6 5h12l-1.4 15.2a1 1 0 0 1-1 .8H8.4a1 1 0 0 1-1-.8z"/><rect x="8.5" y="9" width="3.5" height="3.5" rx=".6" transform="rotate(-10 10 11)"/><rect x="12.5" y="12.5" width="3.5" height="3.5" rx=".6" transform="rotate(12 14 14)"/>',
-    lemon: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.5"/><path d="M12 6.5v11M6.5 12h11M8.1 8.1l7.8 7.8M15.9 8.1l-7.8 7.8"/>'
+    lemon: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.5"/><path d="M12 6.5v11M6.5 12h11M8.1 8.1l7.8 7.8M15.9 8.1l-7.8 7.8"/>',
+    pud: '<path d="M6 11h12l-1.2 8.3a1.5 1.5 0 0 1-1.5 1.2H8.7a1.5 1.5 0 0 1-1.5-1.2z"/><path d="M6 11c0-2.5 2.7-4 6-4s6 1.5 6 4M9 7.5c.5-1.7 1.6-2.5 3-2.5"/>',
+    sand: '<path d="M3.5 15.5L12 5l8.5 10.5z"/><path d="M5 17.5h14M6.5 19.5h11"/>',
+    salad: '<path d="M3.5 11.5h17a8.5 8.5 0 0 1-17 0z"/><path d="M8 11.5c0-3 1.5-5 4-6M12 11.5c.5-2.5 2-4 4.5-4.5"/>'
   };
   var bag = {}, g = document.getElementById('menu-g');
   var PLUS = '<svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>', TICK = '<svg viewBox="0 0 14 14"><path d="M2 7.5l3 3 7-7"/></svg>';
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function render() {
-    g.innerHTML = MENU.map(function (c, ci) {
-      return '<div class="cat"><h3><span class="lat">' + c[0] + '</span><span>' + c[1] + '</span></h3>' + c[2].map(function (m, i) {
-        var n = bag[m[0]] || 0;
-        return '<div class="it"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(m[0]) + '</b><span class="p">' + fmt(m[4]) + '</span><button class="add' + (n ? ' on' : '') + '" data-c="' + ci + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK : PLUS) + '</button><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>';
-      }).join('') + '</div>';
-    }).join('');
+  var cat = 0, tabs = document.getElementById('tabs');
+  var OPT = location.hostname.indexOf('vercel.app') > -1;
+  function photo(f, w) { return OPT ? '/_vercel/image?url=' + encodeURIComponent(SRC + f) + '&w=' + w + '&q=75' : SRC + f; }
+  function thumb(m) { return m[5] ? '<img src="' + photo(m[5], 256) + '" alt="" onerror="this.remove()">' : '<svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg>'; }
+  window.__img = function (im) { im.classList.add('ok'); };
+  window.__imgErr = function (im) { if (!im.dataset.f && OPT) { im.dataset.f = 1; im.src = im.dataset.raw; } else im.remove(); };
+  function renderTabs() {
+    tabs.innerHTML = MENU.map(function (c, ci) { return '<button type="button" role="tab" data-t="' + ci + '" aria-selected="' + (ci === cat) + '">' + c[1] + '</button>'; }).join('');
   }
-  function fmt(n) { return (n % 1 ? n.toFixed(2).replace(/0$/, '') : String(n)) + ' JD'; }
-  function money(n) { return n.toFixed(2) + ' JD'; }
+  function render(swap) {
+    var c = MENU[cat];
+    g.innerHTML = c[2].map(function (m, i) {
+      var n = bag[m[0]] || 0;
+      return '<article class="it"><div class="ph"><img loading="lazy" src="' + photo(m[5], 640) + '" data-raw="' + SRC + m[5] + '" alt="' + esc(m[1]) + '" onload="__img(this)" onerror="__imgErr(this)"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span>' + (m[6] ? '<span class="sz">M / L</span>' : '') + '</div>' +
+        '<div class="tx"><b>' + esc(m[0]) + '</b><span class="p">' + fmt(m[4]) + '</span><small>' + esc(m[2]) + ' · <span class="lat">' + esc(m[1]) + '</span></small></div>' +
+        '<div class="row"><span class="q">' + (n ? 'في السلة: ' + n : '') + '</span><button class="add' + (n ? ' on' : '') + '" data-c="' + cat + '" data-i="' + i + '" aria-label="أضف ' + esc(m[0]) + '">' + (n ? TICK + 'أضف المزيد' : PLUS + 'أضف') + '</button></div></article>';
+    }).join('');
+    if (swap) { g.classList.remove('swap'); void g.offsetWidth; g.classList.add('swap'); }
+  }
+  tabs.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-t]'); if (!b || +b.dataset.t === cat) return;
+    cat = +b.dataset.t; renderTabs(); render(true);
+    var tb = tabs.querySelector('[data-t="' + cat + '"]'); tabs.scrollTo({ left: tb.offsetLeft - tabs.clientWidth / 2 + tb.offsetWidth / 2, behavior: 'smooth' });
+  });
+  renderTabs();
+  function fmt(n) { return n.toFixed(3) + ' JD'; }
+  function money(n) { return n.toFixed(3) + ' JD'; }
+
   var ITEMS = {}; MENU.forEach(function (c) { c[2].forEach(function (m) { ITEMS[m[0]] = m; }); });
   try { var saved = JSON.parse(localStorage.getItem('peak-cart') || '{}'); Object.keys(saved).forEach(function (k) { if (ITEMS[k] && saved[k] > 0) bag[k] = Math.min(20, saved[k] | 0); }); } catch (e) {}
   function save() { try { localStorage.setItem('peak-cart', JSON.stringify(bag)); } catch (e) {} }
@@ -427,13 +503,13 @@ footer p{color:var(--mute);font-size:13px}
     var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save();
     fly(b, m); render(); var nb = g.querySelector('.add[data-c="' + b.dataset.c + '"][data-i="' + b.dataset.i + '"]');
     if (nb) { nb.classList.add('pop'); var rp = document.createElement('i'); rp.className = 'ring'; nb.appendChild(rp); setTimeout(function () { rp.remove(); }, 650); nb.closest('.it').classList.add('glow'); }
-    toast('انضاف ' + m[0] + ' للسلة'); upd(true);
+    toast('تمت إضافة ' + m[0] + ' إلى السلة'); upd(true);
   });
   var RM = false; /* animations are part of the prototype; Windows 'animation effects off' was hiding them all */
   function fly(from, m) {
     var cb = document.getElementById('cart-open'); if (RM || !cb.animate) return;
     var a = from.getBoundingClientRect(), z = cb.getBoundingClientRect(), d = document.createElement('div');
-    d.className = 'fly'; d.innerHTML = '<svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg>'; d.style.left = (a.left + a.width / 2 - 22) + 'px'; d.style.top = (a.top + a.height / 2 - 22) + 'px';
+    d.className = 'fly'; d.innerHTML = thumb(m); d.style.left = (a.left + a.width / 2 - 28) + 'px'; d.style.top = (a.top + a.height / 2 - 28) + 'px';
     document.body.appendChild(d);
     var dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
     // smooth parabola: sample a curve so the motion has no corners
@@ -457,7 +533,7 @@ footer p{color:var(--mute);font-size:13px}
     var n = count();
     document.getElementById('cart-n').textContent = n || '';
     var bagEl = document.getElementById('bag'), was = bagEl.classList.contains('show');
-    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b id="bag-t"></b>' : '';
+    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' منتج' : ' منتجات') + ' · <b id="bag-t"></b>' : '';
     if (n) countUp(document.getElementById('bag-t'), upd.last || 0, subtotal()); upd.last = subtotal();
     bagEl.classList.toggle('show', n > 0 && !drawer.classList.contains('on'));
     if (added && was) { bagEl.classList.remove('ping'); void bagEl.offsetWidth; bagEl.classList.add('ping'); }
@@ -482,27 +558,27 @@ footer p{color:var(--mute);font-size:13px}
     document.getElementById('d-title').textContent = step === 'checkout' ? 'checkout' : step === 'done' ? 'thank you' : 'cart';
     if (step === 'cart') {
       var keys = Object.keys(bag);
-      if (!keys.length) { db.innerHTML = '<div class="empty-c"><b>السلة فاضية</b>ضيف إشي من المنيو.</div>'; df.innerHTML = '<button class="pill full" type="button" data-go="menu">روح للمنيو</button>'; return; }
+      if (!keys.length) { db.innerHTML = '<div class="empty-c"><b>السلة فارغة</b>أضف منتجاتك من القائمة.</div>'; df.innerHTML = '<button class="pill full" type="button" data-go="menu">تصفّح القائمة</button>'; return; }
       db.innerHTML = keys.map(function (k) { var m = ITEMS[k];
-        return '<div class="ci"><span class="ic"><svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg></span><b>' + esc(k) + '</b><span class="lp">' + money(m[4] * bag[k]) + '</span><span class="qty"><button type="button" data-q="-1" data-k="' + esc(k) + '" aria-label="أقل">−</button><span>' + bag[k] + '</span><button type="button" data-q="1" data-k="' + esc(k) + '" aria-label="أكثر">+</button></span><button class="rm" type="button" data-rm="' + esc(k) + '">شيل</button></div>';
+        return '<div class="ci"><span class="ic">' + thumb(m) + '</span><b>' + esc(k) + '</b><span class="lp">' + money(m[4] * bag[k]) + '</span><span class="qty"><button type="button" data-q="-1" data-k="' + esc(k) + '" aria-label="أقل">−</button><span>' + bag[k] + '</span><button type="button" data-q="1" data-k="' + esc(k) + '" aria-label="أكثر">+</button></span><button class="rm" type="button" data-rm="' + esc(k) + '">إزالة</button></div>';
       }).join('');
-      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="checkout">كمّل الطلب</button>';
+      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="checkout">متابعة الطلب</button>';
     } else if (step === 'checkout') {
       db.innerHTML =
         '<div class="fld"><span>طريقة الاستلام</span><div class="seg"><label><input type="radio" name="mode" value="pickup"' + (form.mode === 'pickup' ? ' checked' : '') + '>استلام من المحل<small>الدوار السابع</small></label><label><input type="radio" name="mode" value="delivery"' + (form.mode === 'delivery' ? ' checked' : '') + '>توصيل<small>+' + money(DELIVERY) + '</small></label></div></div>' +
-        '<label class="fld" id="f-name"><span>الاسم</span><input autocomplete="name" value="' + esc(form.name || '') + '"><div class="err">اكتب اسمك</div></label>' +
-        '<label class="fld" id="f-phone"><span>رقم الهاتف</span><input type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="07X XXX XXXX" value="' + esc(form.phone || '') + '"><div class="err">اكتب رقم أردني صحيح (07X XXX XXXX)</div></label>' +
-        (form.mode === 'delivery' ? '<label class="fld" id="f-addr"><span>العنوان</span><textarea autocomplete="street-address" placeholder="المنطقة، الشارع، البناية، الطابق">' + esc(form.addr || '') + '</textarea><div class="err">اكتب العنوان</div></label>' : '') +
-        '<div class="fld"><span>الوقت</span><div class="seg"><label><input type="radio" name="when" value="asap"' + (form.when === 'asap' ? ' checked' : '') + '>بأسرع وقت<small>تقريباً ٢٠ دقيقة</small></label><label><input type="radio" name="when" value="later"' + (form.when === 'later' ? ' checked' : '') + '>وقت معيّن<small>اختار الساعة</small></label></div></div>' +
-        (form.when === 'later' ? '<label class="fld" id="f-time"><span>الساعة</span><input type="time" dir="ltr" value="' + esc(form.time || '') + '"><div class="err">اختار الساعة</div></label>' : '') +
-        '<label class="fld"><span>ملاحظات (اختياري)</span><textarea id="f-note" placeholder="مثلاً: بدون سكر">' + esc(form.note || '') + '</textarea></label>' +
-        '<div class="fld"><span>الدفع</span><div class="seg"><label><input type="radio" name="pay" value="cash" checked>كاش<small>عند الاستلام</small></label><label class="off"><span class="soon">قريباً</span><input type="radio" name="pay" value="card" disabled>بطاقة / CliQ<small>مش مفعّل لسا</small></label></div></div>';
-      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="place">أكّد الطلب · <span class="lat">' + money(subtotal() + (form.mode === 'delivery' ? DELIVERY : 0)) + '</span></button><p style="text-align:center;font-size:12.5px;color:var(--mute);margin-top:10px">نموذج تجريبي: الطلب ما بنبعت لأي جهة.</p>';
+        '<label class="fld" id="f-name"><span>الاسم</span><input autocomplete="name" value="' + esc(form.name || '') + '"><div class="err">يرجى إدخال الاسم</div></label>' +
+        '<label class="fld" id="f-phone"><span>رقم الهاتف</span><input type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="07X XXX XXXX" value="' + esc(form.phone || '') + '"><div class="err">يرجى إدخال رقم أردني صحيح (07X XXX XXXX)</div></label>' +
+        (form.mode === 'delivery' ? '<label class="fld" id="f-addr"><span>العنوان</span><textarea autocomplete="street-address" placeholder="المنطقة، الشارع، البناية، الطابق">' + esc(form.addr || '') + '</textarea><div class="err">يرجى إدخال العنوان</div></label>' : '') +
+        '<div class="fld"><span>الوقت</span><div class="seg"><label><input type="radio" name="when" value="asap"' + (form.when === 'asap' ? ' checked' : '') + '>في أقرب وقت<small>خلال ٢٠ دقيقة تقريباً</small></label><label><input type="radio" name="when" value="later"' + (form.when === 'later' ? ' checked' : '') + '>وقت محدد<small>اختر الوقت المناسب</small></label></div></div>' +
+        (form.when === 'later' ? '<label class="fld" id="f-time"><span>الساعة</span><input type="time" dir="ltr" value="' + esc(form.time || '') + '"><div class="err">يرجى اختيار الوقت</div></label>' : '') +
+        '<label class="fld"><span>ملاحظات (اختياري)</span><textarea id="f-note" placeholder="مثال: بدون سكر">' + esc(form.note || '') + '</textarea></label>' +
+        '<div class="fld"><span>الدفع</span><div class="seg"><label><input type="radio" name="pay" value="cash" checked>نقداً<small>عند الاستلام</small></label><label class="off"><span class="soon">قريباً</span><input type="radio" name="pay" value="card" disabled>بطاقة / CliQ<small>متاح قريباً</small></label></div></div>';
+      df.innerHTML = totals() + '<button class="pill full" type="button" data-go="place">أكّد الطلب · <span class="lat">' + money(subtotal() + (form.mode === 'delivery' ? DELIVERY : 0)) + '</span></button><p style="text-align:center;font-size:12.5px;color:var(--mute);margin-top:10px">نسخة تجريبية: لن يتم إرسال الطلب فعلياً.</p>';
     } else {
       var o = form.last;
-      db.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>وصلنا طلبك!</h4><div>رقم الطلب</div><div class="no">' + o.id + '</div><div>' + (o.mode === 'delivery' ? 'رح يوصلك' : 'جاهز للاستلام') + ' ' + (o.when === 'asap' ? 'خلال ٢٠ دقيقة تقريباً' : 'الساعة ' + esc(o.time)) + '.</div>' +
-        '<div class="recap">' + o.items.map(function (x) { return '<div><span>' + x[1] + ' × ' + esc(x[0]) + '</span><span class="lat">' + money(x[2]) + '</span></div>'; }).join('') + '<div style="border-top:1px solid rgba(26,23,24,.2);margin-top:6px;padding-top:8px;font-weight:700"><span>الإجمالي · كاش</span><span class="lat">' + money(o.total) + '</span></div></div></div>';
-      df.innerHTML = '<button class="pill full" type="button" data-go="close">تمام</button>';
+      db.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>تم استلام طلبك</h4><div>رقم الطلب</div><div class="no">' + o.id + '</div><div>' + (o.mode === 'delivery' ? 'سيصلك طلبك' : 'سيكون طلبك جاهزاً للاستلام') + ' ' + (o.when === 'asap' ? 'خلال ٢٠ دقيقة تقريباً' : 'الساعة ' + esc(o.time)) + '.</div>' +
+        '<div class="recap">' + o.items.map(function (x) { return '<div><span>' + x[1] + ' × ' + esc(x[0]) + '</span><span class="lat">' + money(x[2]) + '</span></div>'; }).join('') + '<div style="border-top:1px solid rgba(26,23,24,.2);margin-top:6px;padding-top:8px;font-weight:700"><span>الإجمالي · نقداً</span><span class="lat">' + money(o.total) + '</span></div></div></div>';
+      df.innerHTML = '<button class="pill full" type="button" data-go="close">حسناً</button>';
     }
   }
   function readForm() {
@@ -549,7 +625,7 @@ footer p{color:var(--mute);font-size:13px}
   });
   render(); upd();
   if ('IntersectionObserver' in window && !RM) {
-    var rvs = document.querySelectorAll('.sh, .parts, .cat, .story blockquote, .visit-g, footer .mark');
+    var rvs = document.querySelectorAll('.sh, .parts, .story blockquote, .visit-g, footer .flogo');
     var ro = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }); }, { threshold: .15 });
     rvs.forEach(function (el, i) { el.classList.add('rv'); if (el.classList.contains('cat')) el.style.transitionDelay = (Array.prototype.indexOf.call(el.parentNode.children, el) * 0.1) + 's'; ro.observe(el); });
   }
