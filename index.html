@@ -73,14 +73,20 @@ footer p{color:var(--ink)!important}
 .diagram{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
 .diagram svg{width:100%;max-width:440px;justify-self:center}
 .diagram svg{overflow:visible}
-.diagram .lid{transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
-.diagram.open .lid{transform:translateY(-44px)}
-.diagram .fill{transform:translateY(210px);transition:transform 1.2s cubic-bezier(.2,.8,.2,1) .2s}
-.diagram.open .fill{transform:none}
+.diagram .lid{transform-box:fill-box;transform-origin:50% 100%;transition:transform 1s cubic-bezier(.22,1,.36,1);will-change:transform}
+.diagram.open .lid{transform:translateY(-50px) rotate(-2deg)}
+.diagram.open .lid-in{animation:float 3.6s ease-in-out 1s infinite}
+@keyframes float{50%{transform:translateY(-7px)}}
+.diagram .lvl{transform:translateY(222px);transition:transform 1.7s cubic-bezier(.45,.05,.25,1) .35s;will-change:transform}
+.diagram.open .lvl{transform:none}
+.diagram:not(.open) .lvl{transition:transform .6s cubic-bezier(.4,0,.6,1)}
+.diagram .L text{opacity:0;transition:opacity .4s}
+.diagram.open .L text{opacity:1}
+.diagram.open .L4 text{transition-delay:.7s}.diagram.open .L3 text{transition-delay:1.05s}.diagram.open .L2 text{transition-delay:1.4s}.diagram.open .L1 text{transition-delay:1.75s}
 .parts{list-style:none;border-top:1px solid var(--rule)}
 .parts li{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--rule);opacity:.25;transition:opacity .6s}
 .diagram.open .parts li{opacity:1}
-.diagram.open .parts li:nth-child(2){transition-delay:.12s}.diagram.open .parts li:nth-child(3){transition-delay:.24s}.diagram.open .parts li:nth-child(4){transition-delay:.36s}
+.diagram.open .parts li:nth-child(4){transition-delay:.7s}.diagram.open .parts li:nth-child(3){transition-delay:1.05s}.diagram.open .parts li:nth-child(2){transition-delay:1.4s}.diagram.open .parts li:nth-child(1){transition-delay:1.75s}
 .parts .n{font-family:"Inter Tight";font-weight:800;color:var(--pink);font-size:26px;line-height:1.2;direction:ltr}
 .parts b{font-size:19px}
 .parts p{grid-column:2;color:var(--mute);font-size:15px}
@@ -136,7 +142,7 @@ footer .mark{font-size:clamp(90px,16vw,220px)}
 footer p{color:var(--mute);font-size:13px}
 
 /* order bar */
-.bag{position:fixed;inset:auto 0 0 0;z-index:20;transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.9,.2,1);background:var(--ink);color:var(--paper)}
+.bag{position:fixed;inset:auto 0 0 0;z-index:20;transform:translateY(105%);transition:transform .7s cubic-bezier(.34,1.3,.5,1);background:var(--ink);color:var(--paper)}
 .bag.show{transform:none}
 .bag .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .bag .sum{font-size:15px}.bag .sum b{font-family:"Inter Tight";font-weight:800;direction:ltr;unicode-bidi:isolate}
@@ -148,10 +154,14 @@ footer p{color:var(--mute);font-size:13px}
 .cart-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .cart-btn .n{font-family:"Inter Tight";font-weight:800;background:var(--pink);color:#fff;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px;padding:0 6px}
 .cart-btn .n:empty{display:none}
-.scrim{position:fixed;inset:0;background:rgba(26,23,24,.38);z-index:30;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.scrim{position:fixed;inset:0;background:rgba(26,23,24,.38);z-index:30;opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.22,1,.36,1),visibility .5s}
 .scrim.on{opacity:1;visibility:visible}
-.drawer{position:fixed;top:0;bottom:0;left:0;width:min(460px,100%);z-index:31;background:var(--paper);border-right:1px solid var(--ink);transform:translateX(-102%);transition:transform .45s cubic-bezier(.2,.9,.2,1);display:flex;flex-direction:column}
-.drawer.on{transform:none}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(460px,100%);z-index:31;background:var(--paper);border-right:1px solid var(--ink);transform:translateX(-102%);transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s;will-change:transform;display:flex;flex-direction:column}
+.drawer.on{transform:none;box-shadow:30px 0 80px -30px rgba(26,23,24,.45)}
+.drawer .d-h,.drawer .steps,.drawer .d-f{opacity:0;transform:translateX(-18px);transition:opacity .45s,transform .6s cubic-bezier(.22,1,.36,1)}
+.drawer.on .d-h,.drawer.on .steps,.drawer.on .d-f{opacity:1;transform:none}
+.drawer.on .d-h{transition-delay:.12s}.drawer.on .steps{transition-delay:.18s}.drawer.on .d-f{transition-delay:.28s}
+.drawer .d-h .x{transition:transform .3s cubic-bezier(.22,1,.36,1),background .2s}.drawer .d-h .x:hover{transform:rotate(90deg);background:var(--blush2)}
 .d-h{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--ink)}
 .d-h h3{font-family:"Inter Tight";font-weight:800;font-size:30px;letter-spacing:-.04em;color:var(--pink);direction:ltr}
 .d-h .x{width:38px;height:38px;border-radius:50%;border:1px solid var(--ink);background:none;cursor:pointer;font-size:20px;line-height:1;color:var(--ink)}
@@ -205,6 +215,15 @@ footer p{color:var(--mute);font-size:13px}
 .it .ic,.ci .ic{transition:background .25s,transform .25s}
 .it:hover .ic{background:var(--blush);transform:rotate(-6deg) scale(1.06)}
 .add.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+.add{position:relative}
+.add .ring{position:absolute;inset:-1px;border-radius:50%;border:2px solid var(--pink);animation:ring .6s cubic-bezier(.22,1,.36,1) forwards;pointer-events:none}
+@keyframes ring{to{transform:scale(2.1);opacity:0}}
+.it{transition:background-color .6s}
+.it.glow{animation:glow 1.1s ease-out}
+@keyframes glow{0%{background:rgba(244,182,202,.55)}100%{background:transparent}}
+.bag.ping .w{animation:ping .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes ping{40%{transform:translateY(-5px)}}
+.fly{will-change:transform,opacity}
 @keyframes pop{40%{transform:scale(1.28)}}
 .fly{position:fixed;z-index:40;width:44px;height:44px;border-radius:50%;background:var(--blush);display:grid;place-items:center;pointer-events:none;box-shadow:0 10px 24px -8px rgba(26,23,24,.4)}
 .fly svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -273,25 +292,23 @@ footer p{color:var(--mute);font-size:13px}
   <div class="sh"><span class="caps">01 — inside</span><h2>guess what's inside?<small>كاسة وحدة، أربع طبقات.</small></h2></div>
   <div class="diagram" id="dg">
     <svg viewBox="0 0 300 380" aria-hidden="true">
-      <defs><clipPath id="cupc"><path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/></clipPath></defs>
+      <defs><clipPath id="lvl"><rect class="lvl" x="30" y="140" width="240" height="230"/></clipPath><clipPath id="cupc"><path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/></clipPath></defs>
       <ellipse cx="150" cy="362" rx="86" ry="8" fill="rgba(26,23,24,.12)"/>
       <path d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z" fill="rgba(255,255,255,.55)"/>
-      <g clip-path="url(#cupc)"><g class="fill">
-        <rect x="40" y="150" width="220" height="46" fill="#e2a868"/>
-        <rect x="40" y="196" width="220" height="50" fill="#fffaf6"/>
-        <rect x="40" y="246" width="220" height="54" fill="#d9799b"/>
-        <rect x="40" y="300" width="220" height="60" fill="#e2a868"/>
-        <path d="M40 196 q20 -7 40 0 t40 0 t40 0 t40 0 t40 0 M40 246 q20 6 40 0 t40 0 t40 0 t40 0 t40 0 M40 300 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="rgba(26,23,24,.25)" stroke-width="1.5"/>
-        <g font-family="Inter Tight, sans-serif" font-weight="800" font-size="15" fill="#1a1718"><text x="102" y="178">01</text><text x="102" y="226">02</text><text x="102" y="278">03</text><text x="102" y="332">04</text></g>
+      <g clip-path="url(#cupc)"><g clip-path="url(#lvl)" font-family="Inter Tight, sans-serif" font-weight="800" font-size="15">
+        <g class="L L4"><rect x="40" y="300" width="220" height="60" fill="#e2a868"/><path d="M40 300 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="rgba(26,23,24,.22)" stroke-width="1.5"/><text x="102" y="332" fill="#1a1718">04</text></g>
+        <g class="L L3"><rect x="40" y="246" width="220" height="56" fill="#d9799b"/><path d="M40 246 q20 6 40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="rgba(26,23,24,.22)" stroke-width="1.5"/><text x="102" y="278" fill="#1a1718">03</text></g>
+        <g class="L L2"><rect x="40" y="196" width="220" height="52" fill="#fffaf6"/><path d="M40 196 q20 -7 40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="rgba(26,23,24,.22)" stroke-width="1.5"/><text x="102" y="226" fill="#1a1718">02</text></g>
+        <g class="L L1"><rect x="40" y="150" width="220" height="48" fill="#e2a868"/><circle cx="150" cy="166" r="3" fill="#c48a4c"/><circle cx="178" cy="176" r="2.5" fill="#c48a4c"/><circle cx="200" cy="162" r="3" fill="#c48a4c"/><text x="102" y="178" fill="#1a1718">01</text></g>
       </g></g>
       <path class="ln" d="M58 150 H242 L224 344 Q223 352 214 352 H86 Q77 352 76 344 Z"/>
       <text x="196" y="330" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="22" fill="#fffaf6">peak</text>
-      <g class="lid">
+      <g class="lid"><g class="lid-in">
         <path class="ln" d="M60 140 Q66 62 150 58 Q234 62 240 140 Z" fill="rgba(255,255,255,.7)"/>
         <rect class="ln" x="46" y="138" width="208" height="14" rx="7" fill="#fffaf6"/>
         <path class="ln thin" d="M136 60 Q150 46 164 60"/>
         <path d="M96 128 Q102 96 128 84" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="5" stroke-linecap="round"/>
-      </g>
+      </g></g>
     </svg>
     <div>
       <ol class="parts">
@@ -395,7 +412,8 @@ footer p{color:var(--mute);font-size:13px}
   g.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var m = MENU[+b.dataset.c][2][+b.dataset.i]; bag[m[0]] = Math.min(20, (bag[m[0]] || 0) + 1); save();
-    fly(b, m); render(); var nb = g.querySelector('.add[data-c="' + b.dataset.c + '"][data-i="' + b.dataset.i + '"]'); if (nb) nb.classList.add('pop');
+    fly(b, m); render(); var nb = g.querySelector('.add[data-c="' + b.dataset.c + '"][data-i="' + b.dataset.i + '"]');
+    if (nb) { nb.classList.add('pop'); var rp = document.createElement('i'); rp.className = 'ring'; nb.appendChild(rp); setTimeout(function () { rp.remove(); }, 650); nb.closest('.it').classList.add('glow'); }
     toast('انضاف ' + m[0] + ' للسلة'); upd(true);
   });
   var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -405,16 +423,31 @@ footer p{color:var(--mute);font-size:13px}
     d.className = 'fly'; d.innerHTML = '<svg viewBox="0 0 24 24">' + IC[m[3]] + '</svg>'; d.style.left = (a.left + a.width / 2 - 22) + 'px'; d.style.top = (a.top + a.height / 2 - 22) + 'px';
     document.body.appendChild(d);
     var dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
-    d.animate([{ transform: 'translate(0,0) scale(1)' }, { transform: 'translate(' + dx * .5 + 'px,' + (dy * .5 - 90) + 'px) scale(1.1)', offset: .45 }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.3)', opacity: .2 }], { duration: 750, easing: 'cubic-bezier(.4,0,.2,1)' }).onfinish = function () {
+    // smooth parabola: sample a curve so the motion has no corners
+    var lift = Math.min(160, 60 + Math.abs(dx) * .18), kf = [];
+    for (var i = 0; i <= 24; i++) {
+      var t = i / 24, e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      var x = dx * e, y = dy * e - lift * Math.sin(Math.PI * e), sc = 1 + .22 * Math.sin(Math.PI * Math.min(1, e * 1.4)) - .62 * Math.pow(e, 3);
+      kf.push({ transform: 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + sc.toFixed(3) + ') rotate(' + (-18 * e).toFixed(1) + 'deg)', opacity: t > .92 ? 1 - (t - .92) / .08 : 1, offset: t });
+    }
+    d.animate(kf, { duration: 820, easing: 'linear', fill: 'forwards' }).onfinish = function () {
       d.remove(); cb.classList.remove('bump'); void cb.offsetWidth; cb.classList.add('bump'); var n = document.getElementById('cart-n'); n.classList.remove('tick'); void n.offsetWidth; n.classList.add('tick');
     };
+  }
+  function countUp(el, from, to) {
+    if (RM || from === to) { el.textContent = money(to); return; }
+    var t0 = performance.now();
+    (function f(now) { var p = Math.min(1, (now - t0) / 500), e = 1 - Math.pow(1 - p, 3); el.textContent = money(from + (to - from) * e); if (p < 1) requestAnimationFrame(f); })(t0);
   }
   function toast(t) { var el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove('on'); }, 1600); }
   function upd(added) {
     var n = count();
     document.getElementById('cart-n').textContent = n || '';
-    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b>' + money(subtotal()) + '</b>' : '';
-    document.getElementById('bag').classList.toggle('show', n > 0 && !drawer.classList.contains('on'));
+    var bagEl = document.getElementById('bag'), was = bagEl.classList.contains('show');
+    document.getElementById('bag-s').innerHTML = n ? n + (n === 1 ? ' صنف' : ' أصناف') + ' · <b id="bag-t"></b>' : '';
+    if (n) countUp(document.getElementById('bag-t'), upd.last || 0, subtotal()); upd.last = subtotal();
+    bagEl.classList.toggle('show', n > 0 && !drawer.classList.contains('on'));
+    if (added && was) { bagEl.classList.remove('ping'); void bagEl.offsetWidth; bagEl.classList.add('ping'); }
   }
   var drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim'), db = document.getElementById('d-b'), df = document.getElementById('d-f');
   function openCart(st) { step = st || (step === 'done' ? 'cart' : step); drawer.classList.add('on'); scrim.classList.add('on'); drawer.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; paint(); upd(); }
